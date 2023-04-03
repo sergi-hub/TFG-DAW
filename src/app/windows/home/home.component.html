@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div style="background-color: #272B33;">
+<div style="background-color: #202020;">
     <div class="container" *ngIf="!charged">
         <h1>Cargando....</h1>
     </div>
@@ -7,13 +7,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="card mt-5" style="max-height: 333px; background-color: #3C3E44;">
-                        <div class="row no-gutters">
+                    <div class="card mt-5 tarjeta">
+                        <div class="row no-gutters" >
                             <div class="col-md-5">
                                 <img src="{{characters[randomNum].thumbnail.path}}.jpg" class="card-img-top img-fluid"
                                     alt="Descripción de la imagen">
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-7" >
                                 <div class="card-body pb-0">
                                     <h5 class="card-title">{{characters[randomNum].name}}</h5>
                                     <p class="card-text">{{characters[randomNum].description.substring(0,100)}}...</p>
@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card mt-5" style="max-height: 333px; background-color: #3C3E44;">
+                    <div class="card mt-5 tarjeta">
                         <div class="row no-gutters">
                             <div class="col-md-5">
                                 <img src="{{comics[randomNum].thumbnail.path}}.jpg" class="card-img-top img-fluid"
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card mt-5" style="max-height: 333px; background-color: #3C3E44;">
+                    <div class="card mt-5 tarjeta">
                         <div class="row no-gutters">
                             <div class="col-md-5">
                                 <img src="{{events[randomNum].thumbnail.path}}.jpg" class="card-img-top img-fluid"
@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 mb-5">
-                    <div class="card mt-5" style="max-height: 333px; background-color: #3C3E44;">
+                    <div class="card mt-5 tarjeta">
                         <div class="row no-gutters">
                             <div class="col-md-5">
                                 <img src="{{series[5].thumbnail.path}}.jpg" class="card-img-top img-fluid"
@@ -80,15 +80,3 @@
         </div>
     </div>
 </div>
-
-<!-- <div class="row">
-    <div class="col-md-6" *ngFor="let character of characters">
-        <div class="card">
-            <img class="card-img-top" src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}">
-            <div class="card-body">
-                <h5 class="card-title">titulo</h5>
-                <p class="card-text">descripcion</p>
-            </div>
-        </div>
-    </div>
-</div> -->

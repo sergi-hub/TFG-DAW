@@ -1,4 +1,40 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('../../../fonts/roboto/Roboto-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'RobotoBold';
+  src: url('../../../fonts/roboto/Roboto-Bold.ttf');
+}
+
 img{
     width: 200px;
     height: 200px;
+    border-right: 4px solid #F2360C;
+}
+
+h5{
+  color: black;
+  font-family: 'RobotoBold';
+}
+
+p{
+    color: #ccc;
+    font-family: 'Roboto';
+}
+
+.tarjeta {
+  position: relative;
+  max-height: 333px;
+  background-color: #F2360C;
+  background-image: linear-gradient(to right, #260101, #F2360C);
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  transition: 1s all;
+}
+
+.tarjeta:hover {
+  background-position: -100% 0;
+  border-right: 1px solid #F2360C;
 }
