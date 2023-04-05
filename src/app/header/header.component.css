@@ -1,13 +1,41 @@
 @font-face {
-    font-family: 'Climate';
-    src: url('../../fonts/ClimateCrisis-Regular-VariableFont_YEAR.ttf');
-  }
+  font-family: 'Climate';
+  src: url('../../fonts/ClimateCrisis-Regular-VariableFont_YEAR.ttf');
+}
 
+@font-face {
+  font-family: 'Marvel';
+  src: url('../../fonts/Marvel-Regular/Marvel-Regular.ttf');
+}
+
+h1{
+  color: #FFFFFF;
+  text-shadow: 1px 1px 0 #FF0000, 2px 2px 0 #FF0000, 3px 3px 0 #FF0000;
+  font-family: 'Marvel';
+  /* text-transform: uppercase; */
+  
+}
+
+h2{
+  color: #FFFFFF;
+  text-shadow: 1px 1px 0 #FF0000, 2px 2px 0 #FF0000, 3px 3px 0 #FF0000;
+  font-family: 'Marvel';
+}
 
 .bg-image{
-  background-image: url(../../img/bg2.jpg);
+  background-image: url(../../img/bg.jpg);
   background-size: cover; 
   background-position: center center; 
   height: 50vh;
+}
+
+.separador{
+  display: block;
+  height: 4px;
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    #FF4500,
+    transparent);
 }
 
