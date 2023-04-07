@@ -17,9 +17,9 @@ h1{
 }
 
 h2{
-  color: #FFFFFF;
+  color: #CCC;
   text-shadow: 1px 1px 0 #FF0000, 2px 2px 0 #FF0000, 3px 3px 0 #FF0000;
-  font-family: 'Marvel';
+  font-family: 'Climate', sans-serif;
 }
 
 .bg-image{
