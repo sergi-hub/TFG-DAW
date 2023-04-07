@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Marvel';
+    src: url('../../fonts/Marvel-Regular/Marvel-Regular.ttf');
+}
+
+nav{
+    background: linear-gradient(to left, #260101 0%, #EC1922 40%, #EC1922 60%, #260101 100%);
+}
+
+.navbar-text{
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-text span{
+    display: block;
+    text-align: center;
+}
+
+.logo-titulo{
+    font-family: 'Marvel';
+    text-transform: uppercase;
+    color: white;
+    /* font-size: 44px; */
+}

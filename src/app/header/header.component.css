@@ -12,8 +12,6 @@ h1{
   color: #FFFFFF;
   text-shadow: 1px 1px 0 #FF0000, 2px 2px 0 #FF0000, 3px 3px 0 #FF0000;
   font-family: 'Marvel';
-  /* text-transform: uppercase; */
-  
 }
 
 h2{
@@ -32,10 +30,6 @@ h2{
 .separador{
   display: block;
   height: 4px;
-  background-image: linear-gradient(
-    to right,
-    transparent,
-    #FF4500,
-    transparent);
+ background: linear-gradient(to left, #260101 0%, #F2360C 40%, #F2360C 60%, #260101 100%);
 }
 
