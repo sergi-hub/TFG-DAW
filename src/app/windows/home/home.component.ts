@@ -15,7 +15,17 @@ export class HomeComponent {
   series: any[] = [];
   charged: boolean = false;
 
-  randomNum: number = 0;
+  
+  validNum: Array<Array<number>> = [
+    [5, 15, 16, 17],
+    [1, 2, 4, 10, 15],
+    [5, 8, 13, 15]
+  ];
+
+  serieNum: number = 0;
+  charactersNum: number = 0;
+  comicsNum: number = 0;
+  eventNum: number = 0;
 
   constructor(private homeService: HomeService) {}
 
@@ -25,7 +35,14 @@ export class HomeComponent {
    * los datos en el template y no aparezcan errores en consola
    */
   ngOnInit() {
-    this.randomNum = Math.round(Math.random() * 20);
+
+    //Esto de abajo lo hago para asegurarme que las tarjetas del home
+    //que sirven como presentación, no puedan aparecer tarjetas sin descripción,
+    //para dar mejor imagen a la web al entrar
+    this.serieNum = this.validNum[0][Math.round(Math.random() * 4)];
+    this.charactersNum = this.validNum[1][Math.round(Math.random() * 5)];
+    this.comicsNum = this.validNum[2][Math.round(Math.random() * 4)];
+    this.eventNum = Math.round(Math.random() * 20);
 
     const llamada1 = this.homeService.getCharacters();
     const llamada2 = this.homeService.getComics();
@@ -42,6 +59,7 @@ export class HomeComponent {
           console.log(this.series);
           console.log(this.characters);
           console.log(this.comics);
+          console.log(this.events);
           this.charged = true;
         } catch (e) {
           console.log("Ha habido un problema: " + e);

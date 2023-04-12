@@ -16,6 +16,7 @@ img{
 
 h5{
   color: black;
+  font-weight: bold;
   font-family: 'RobotoBold';
 }
 
@@ -37,4 +38,8 @@ p{
 .tarjeta:hover {
   background-position: -100% 0;
   border-right: 1px solid #F2360C;
+}
+
+.link{
+  text-decoration: none;
 }

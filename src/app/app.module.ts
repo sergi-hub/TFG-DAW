@@ -10,6 +10,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { lastSlashFilter } from 'src/pipes/lastSlashFilter.pipe';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
+import { SectionService } from 'src/services/section/section.service';
 
 
 
@@ -28,7 +29,10 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [HomeService],
+  providers: [
+    HomeService,
+    SectionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

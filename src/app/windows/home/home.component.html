@@ -8,72 +8,79 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card mt-5 tarjeta">
-                        <div class="row no-gutters" >
-                            <div class="col-md-5">
-                                <img src="{{characters[randomNum].thumbnail.path}}.jpg" class="card-img-top img-fluid"
-                                    alt="Descripción de la imagen">
-                            </div>
-                            <div class="col-md-7" >
-                                <div class="card-body pb-0">
-                                    <h5 class="card-title">{{characters[randomNum].name}}</h5>
-                                    <p class="card-text">{{characters[randomNum].description.substring(0,100)}}...</p>
-                                    <button class="btn btn-primary">Botón</button>
+                        <a class="link" href="#">
+                            <div class="row no-gutters">
+                                <div class="col-md-5">
+                                    <img src="{{characters[charactersNum].thumbnail.path}}.jpg"
+                                        class="card-img-top img-fluid" alt="Descripción de la imagen">
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="card-body pb-0">
+                                        <h5 class="card-title">{{characters[charactersNum].name}}</h5>
+                                        <p class="card-text">
+                                            {{characters[charactersNum].description.substring(0,100)}}...
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card mt-5 tarjeta">
-                        <div class="row no-gutters">
-                            <div class="col-md-5">
-                                <img src="{{comics[randomNum].thumbnail.path}}.jpg" class="card-img-top img-fluid"
-                                    alt="Descripción de la imagen">
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card-body pb-0">
-                                    <h5 class="card-title">{{comics[randomNum].title.substring(0,21)}}</h5>
-                                    <p class="card-text">{{comics[11].description.substring(0,100)}}...</p>
-                                    <button class="btn btn-primary">Botón</button>
+                        <a class="link" href="#">
+                            <div class="row no-gutters">
+                                <div class="col-md-5">
+                                    <img src="{{comics[comicsNum].thumbnail.path}}.jpg" class="card-img-top img-fluid"
+                                        alt="Descripción de la imagen">
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="card-body pb-0">
+                                        <h5 class="card-title">{{comics[comicsNum].title.substring(0,21)}}</h5>
+                                        <p class="card-text">{{comics[comicsNum].description.substring(0,100)}}...</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card mt-5 tarjeta">
-                        <div class="row no-gutters">
-                            <div class="col-md-5">
-                                <img src="{{events[randomNum].thumbnail.path}}.jpg" class="card-img-top img-fluid"
-                                    alt="Descripción de la imagen">
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card-body pb-0">
-                                    <h5 class="card-title">{{events[randomNum].title}}</h5>
-                                    <p class="card-text">
-                                        {{events[randomNum].description.substring(0,100)}}...
-                                    </p>
-                                    <button class="btn btn-primary">Botón</button>
+                        <a class="link" href="#">
+                            <div class="row no-gutters">
+                                <div class="col-md-5">
+                                    <img src="{{events[eventNum].thumbnail.path}}.jpg" class="card-img-top img-fluid"
+                                        alt="Descripción de la imagen">
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="card-body pb-0">
+                                        <h5 class="card-title">{{events[eventNum].title}}</h5>
+                                        <p class="card-text">
+                                            {{events[eventNum].description.substring(0,100)}}...
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-6 mb-5">
                     <div class="card mt-5 tarjeta">
-                        <div class="row no-gutters">
-                            <div class="col-md-5">
-                                <img src="{{series[5].thumbnail.path}}.jpg" class="card-img-top img-fluid"
-                                    alt="Descripción de la imagen">
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card-body pb-0">
-                                    <h5 class="card-title">{{series[5].title}}</h5>
-                                    <p class="card-text">{{series[5].description.substring(0,100)}}...</p>
-                                    <button class="btn btn-primary">Botón</button>
+                        <a class="link" href="#">
+                            <div class="row no-gutters">
+                                <div class="col-md-5">
+                                    <img src="{{series[this.serieNum].thumbnail.path}}.jpg"
+                                        class="card-img-top img-fluid" alt="Descripción de la imagen">
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="card-body pb-0">
+                                        <h5 class="card-title">{{series[this.serieNum].title}}</h5>
+                                        <p class="card-text">{{series[this.serieNum].description.substring(0,100)}}...
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
