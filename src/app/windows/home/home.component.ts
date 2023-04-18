@@ -39,9 +39,10 @@ export class HomeComponent {
     //Esto de abajo lo hago para asegurarme que las tarjetas del home
     //que sirven como presentación, no puedan aparecer tarjetas sin descripción,
     //para dar mejor imagen a la web al entrar
-    this.serieNum = this.validNum[0][Math.round(Math.random() * 4)];
-    this.charactersNum = this.validNum[1][Math.round(Math.random() * 5)];
-    this.comicsNum = this.validNum[2][Math.round(Math.random() * 4)];
+    this.serieNum = this.validNum[0][Math.round(Math.random() * 3)];
+    console.log(this.serieNum);
+    this.charactersNum = this.validNum[1][Math.round(Math.random() * 4)];
+    this.comicsNum = this.validNum[2][Math.round(Math.random() * 3)];
     this.eventNum = Math.round(Math.random() * 20);
 
     const llamada1 = this.homeService.getCharacters();

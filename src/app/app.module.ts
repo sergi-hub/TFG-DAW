@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { PersonajesComponent } from './windows/personajes/personajes.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './windows/home/home.component';
 import { HeaderComponent } from './header/header.component';
@@ -11,18 +10,19 @@ import { lastSlashFilter } from 'src/pipes/lastSlashFilter.pipe';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SectionService } from 'src/services/section/section.service';
+import { SectionComponent } from './windows/section/section.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PersonajesComponent,
     NavbarComponent,
     HomeComponent,
     HeaderComponent,
     lastSlashFilter,
-    FooterComponent
+    FooterComponent,
+    SectionComponent
   ],
   imports: [
     BrowserModule,

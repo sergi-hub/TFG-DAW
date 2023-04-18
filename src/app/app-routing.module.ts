@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './windows/home/home.component';
-import { PersonajesComponent } from './windows/personajes/personajes.component';
+import { SectionComponent } from './windows/section/section.component';
 
 const routes: Routes = [
   { path: "", component:HomeComponent},
-  { path: "personajes", component:PersonajesComponent}/*,
+  { path: "characters", component:SectionComponent},
+  { path: "events", component:SectionComponent}/*,
   { path: "", component:},
   {path: "", component:}*/
 ];
