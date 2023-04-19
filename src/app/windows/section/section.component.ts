@@ -35,7 +35,17 @@ export class SectionComponent {
           console.log(this.resultados);
         })
     }else if(this.nombreRuta === 'comics'){
-
+      this.home.getComics()
+        .subscribe(data =>{
+          this.resultados = data.data.results;
+          console.log(this.resultados);
+        })
+    }else if(this.nombreRuta === 'series'){
+      this.home.getSeries()
+        .subscribe(data =>{
+          this.resultados = data.data.results;
+          console.log(this.resultados);
+        })
     }
   }
 

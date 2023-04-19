@@ -10,9 +10,12 @@
                         </div>
                         <div class="col-md-7">
                             <div class="card-body pb-0">
-                                <h5 class="card-title">{{resultados[i].name}}</h5>
+                                <h5 class="card-title">
+                                    {{ nombreRuta === 'characters' ? resultados[i].name : resultados[i].title }}
+                                </h5>
+                                
                                 <p class="card-text">
-                                    {{resultados[i].description.substring(0,100)}}...
+                                    {{resultados[i].description}}
                                 </p>
                             </div>
                         </div>

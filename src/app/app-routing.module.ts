@@ -6,7 +6,9 @@ import { SectionComponent } from './windows/section/section.component';
 const routes: Routes = [
   { path: "", component:HomeComponent},
   { path: "characters", component:SectionComponent},
-  { path: "events", component:SectionComponent}/*,
+  { path: "events", component:SectionComponent},
+  { path: "series", component:SectionComponent},
+  { path: "comics", component:SectionComponent}/*,
   { path: "", component:},
   {path: "", component:}*/
 ];
