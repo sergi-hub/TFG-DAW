@@ -13,9 +13,8 @@
                                 <h5 class="card-title">
                                     {{ nombreRuta === 'characters' ? resultados[i].name : resultados[i].title }}
                                 </h5>
-                                
                                 <p class="card-text">
-                                    {{resultados[i].description}}
+                                    {{ resultados[i].description | nullOrEmpty }}
                                 </p>
                             </div>
                         </div>

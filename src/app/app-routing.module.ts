@@ -8,9 +8,7 @@ const routes: Routes = [
   { path: "characters", component:SectionComponent},
   { path: "events", component:SectionComponent},
   { path: "series", component:SectionComponent},
-  { path: "comics", component:SectionComponent}/*,
-  { path: "", component:},
-  {path: "", component:}*/
+  { path: "comics", component:SectionComponent}
 ];
 
 @NgModule({

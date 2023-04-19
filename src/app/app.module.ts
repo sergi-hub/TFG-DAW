@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SectionService } from 'src/services/section/section.service';
 import { SectionComponent } from './windows/section/section.component';
+import { NullOrEmptyPipe } from 'src/pipes/nullOrEmpty';
 
 
 
@@ -21,6 +22,7 @@ import { SectionComponent } from './windows/section/section.component';
     HomeComponent,
     HeaderComponent,
     lastSlashFilter,
+    NullOrEmptyPipe,
     FooterComponent,
     SectionComponent
   ],

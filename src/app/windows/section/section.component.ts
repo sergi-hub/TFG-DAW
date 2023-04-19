@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HomeService } from 'src/services/home/home.service';
+import { NullOrEmptyPipe } from 'src/pipes/nullOrEmpty';
 
 @Component({
   selector: 'app-section',
