@@ -9,19 +9,23 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
+  // Variables para almacenar los datos de la API
   characters: any[] = [];
   comics: any[] = [];
   events: any[] = [];
   series: any[] = [];
+
+  // Variable para indicar si los datos ya estan cargados o no
   charged: boolean = false;
 
-  
+  // Array de números para elegir de forma aleatoria una serie, personaje y cómic para mostrarlo en el home y que si tenga todo el contenido (img y descripción)
   validNum: Array<Array<number>> = [
-    [5, 15, 16, 17],
-    [1, 2, 4, 10, 15],
-    [5, 8, 13, 15]
+    [5, 15, 16, 17], // series
+    [1, 2, 4, 10, 15], // personajes
+    [5, 8, 13, 15] // cómics
   ];
 
+  // Variables que almacenarán el número aleatorio escogido
   serieNum: number = 0;
   charactersNum: number = 0;
   comicsNum: number = 0;
@@ -29,27 +33,20 @@ export class HomeComponent {
 
   constructor(private homeService: HomeService) {}
 
-  /**
-   * Hacemos las llamadas a la API y una vez estén todas hechas
-   * se cambia el valor de la variable charged a true para que se muestren
-   * los datos en el template y no aparezcan errores en consola
-   */
   ngOnInit() {
-
-    //Esto de abajo lo hago para asegurarme que las tarjetas del home
-    //que sirven como presentación, no puedan aparecer tarjetas sin descripción,
-    //para dar mejor imagen a la web al entrar
+    // Se elige de forma aleatoria una serie, personaje, comic y evento
     this.serieNum = this.validNum[0][Math.round(Math.random() * 3)];
-    console.log(this.serieNum);
     this.charactersNum = this.validNum[1][Math.round(Math.random() * 4)];
     this.comicsNum = this.validNum[2][Math.round(Math.random() * 3)];
     this.eventNum = Math.round(Math.random() * 20);
 
-    const llamada1 = this.homeService.getCharacters();
-    const llamada2 = this.homeService.getComics();
-    const llamada3 = this.homeService.getEvents();
-    const llamada4 = this.homeService.getSeries();
+    // Se realizan las llamadas a la API
+    const llamada1 = this.homeService.getCharacters("0");
+    const llamada2 = this.homeService.getComics("0");
+    const llamada3 = this.homeService.getEvents("0");
+    const llamada4 = this.homeService.getSeries("0");
 
+    // Se utiliza forkJoin para asegurarnos de que las llamadas estan realizadas antes de intentar mostrar datos en el template
     forkJoin([llamada1, llamada2, llamada3, llamada4])
       .subscribe(resultados => {
         try {
@@ -57,11 +54,8 @@ export class HomeComponent {
           this.comics = resultados[1].data.results;
           this.events = resultados[2].data.results;
           this.series = resultados[3].data.results;
-          console.log(this.series);
-          console.log(this.characters);
-          console.log(this.comics);
-          console.log(this.events);
-          this.charged = true;
+
+          this.charged = true; // Variable para indicar que ya se han hecho las llamadas
         } catch (e) {
           console.log("Ha habido un problema: " + e);
         }

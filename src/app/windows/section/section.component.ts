@@ -7,45 +7,50 @@ import { NullOrEmptyPipe } from 'src/pipes/nullOrEmpty';
 @Component({
   selector: 'app-section',
   templateUrl: './section.component.html',
-  styleUrls: ['../home/home.component.css']//aqui pongo la ruta de los estilos que tengo en el css del home, ya que las tarjetas no cambian
+  styleUrls: ['../home/home.component.css']// Ruta los estilos que hay en el css del home, ya que las tarjetas no cambian
 })
 export class SectionComponent {
 
-  public nombreRuta: string = "";
-  public resultados: any[] = [];
+  public nombreRuta: string = ""; // Nombre de la ruta actual 
+  public resultados: any[] = []; // Array que contiene los resultados obtenidos de la llamada al servicio
+
+  public pageNum: number = 0; // Número de la página
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute, private home: HomeService) {
-    this.nombreRuta = this.route.snapshot.url[0].path;
+    this.nombreRuta = this.route.snapshot.url[0].path; // Se asigna el nombre de la ruta actual
   }
 
   ngOnInit() {
-    this.compruebaUrl();
+    // Nos suscribimos a los parámetros de la ruta para que cuando esta cambie, aparezcan nuevos datos en la pantalla
+    this.route.params.subscribe(params => {
+      this.pageNum = +params['pg'];
+      this.compruebaUrl();
+    });
   }
 
+  /**
+   * Verifica el nombre de la ruta actual y se realiza la llamada a la API
+   */
   compruebaUrl(){
-    if(this.nombreRuta === 'characters'){
-      this.home.getCharacters()
+    if(this.nombreRuta === 'characters'){ // Para caracteres
+      this.home.getCharacters(this.pageNum+"")
         .subscribe(data =>{
           this.resultados = data.data.results;
-          console.log(this.resultados);
         })
-    }else if(this.nombreRuta === 'events'){
-      this.home.getEvents()
+    }else if(this.nombreRuta === 'events'){ // Para eventos
+      this.home.getEvents(this.pageNum+"")
         .subscribe(data =>{
           this.resultados = data.data.results;
-          console.log(this.resultados);
         })
-    }else if(this.nombreRuta === 'comics'){
-      this.home.getComics()
+    }else if(this.nombreRuta === 'comics'){ // Para comics
+      this.home.getComics(this.pageNum+"")
         .subscribe(data =>{
           this.resultados = data.data.results;
-          console.log(this.resultados);
         })
-    }else if(this.nombreRuta === 'series'){
-      this.home.getSeries()
+    }else if(this.nombreRuta === 'series'){ // Para series
+      this.home.getSeries(this.pageNum+"")
         .subscribe(data =>{
           this.resultados = data.data.results;
-          console.log(this.resultados);
         })
     }
   }

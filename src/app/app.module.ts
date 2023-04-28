@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SectionService } from 'src/services/section/section.service';
 import { SectionComponent } from './windows/section/section.component';
 import { NullOrEmptyPipe } from 'src/pipes/nullOrEmpty';
+import { PaginacionComponent } from './paginacion/paginacion.component';
 
 
 
@@ -24,7 +25,8 @@ import { NullOrEmptyPipe } from 'src/pipes/nullOrEmpty';
     lastSlashFilter,
     NullOrEmptyPipe,
     FooterComponent,
-    SectionComponent
+    SectionComponent,
+    PaginacionComponent
   ],
   imports: [
     BrowserModule,
