@@ -13,6 +13,7 @@ import { SectionService } from 'src/services/section/section.service';
 import { SectionComponent } from './windows/section/section.component';
 import { NullOrEmptyPipe } from 'src/pipes/nullOrEmpty';
 import { PaginacionComponent } from './paginacion/paginacion.component';
+import { ItemDetailComponent } from './windows/item-detail/item-detail.component';
 
 
 
@@ -26,7 +27,8 @@ import { PaginacionComponent } from './paginacion/paginacion.component';
     NullOrEmptyPipe,
     FooterComponent,
     SectionComponent,
-    PaginacionComponent
+    PaginacionComponent,
+    ItemDetailComponent
   ],
   imports: [
     BrowserModule,

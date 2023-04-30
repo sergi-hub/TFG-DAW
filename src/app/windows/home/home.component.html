@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card mt-5 tarjeta">
-                        <a class="link" href="#">
+                        <a class="link" [routerLink]="['/characters', characters[charactersNum].id]">
                             <div class="row no-gutters">
                                 <div class="col-md-5">
                                     <img src="{{characters[charactersNum].thumbnail.path}}.jpg"
@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="card mt-5 tarjeta">
-                        <a class="link" href="#">
+                        <a class="link" [routerLink]="['/comics', comics[comicsNum].id]">
                             <div class="row no-gutters">
                                 <div class="col-md-5">
                                     <img src="{{comics[comicsNum].thumbnail.path}}.jpg" class="card-img-top img-fluid"
@@ -46,7 +46,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="card mt-5 tarjeta">
-                        <a class="link" href="#">
+                        <a class="link" [routerLink]="['/events', events[eventNum].id]">
                             <div class="row no-gutters">
                                 <div class="col-md-5">
                                     <img src="{{events[eventNum].thumbnail.path}}.jpg" class="card-img-top img-fluid"
@@ -66,7 +66,7 @@
                 </div>
                 <div class="col-md-6 mb-5">
                     <div class="card mt-5 tarjeta">
-                        <a class="link" href="#">
+                        <a class="link" [routerLink]="['/series', series[serieNum].id]">
                             <div class="row no-gutters">
                                 <div class="col-md-5">
                                     <img src="{{series[this.serieNum].thumbnail.path}}.jpg"

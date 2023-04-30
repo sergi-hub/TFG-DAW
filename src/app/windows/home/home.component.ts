@@ -54,7 +54,7 @@ export class HomeComponent {
           this.comics = resultados[1].data.results;
           this.events = resultados[2].data.results;
           this.series = resultados[3].data.results;
-
+          
           this.charged = true; // Variable para indicar que ya se han hecho las llamadas
         } catch (e) {
           console.log("Ha habido un problema: " + e);

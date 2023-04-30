@@ -42,6 +42,17 @@ export class HomeService {
   }
 
   /**
+   * @param _id contiene el id del personaje para la url
+   * @returns
+   */
+  getCharacter(_id:string): Observable<any> {
+    // Se obtiene la URL para acceder a un caracter especifico
+    const url: string = `${this.baseUrl}/characters/${_id}?ts=${this.timestamp}&apikey=${this.publicKey}&hash=${this.hash}`;
+    // Se devuelve un Observable con los resultados de la solicitud a la URL (caracter)
+    return this.http.get(url);
+  }
+
+  /**
   * 
   * @param _pageNum contiene el número de la página para la url
   * @returns 
@@ -50,6 +61,17 @@ export class HomeService {
     this.page = parseInt(_pageNum)*parseInt(this.offset)+"";
     const url: string = `${this.baseUrl}/comics?ts=${this.timestamp}&apikey=${this.publicKey}&hash=${this.hash}&offset=${this.page}`;
     // Se devuelve un Observable con los resultados de la solicitud a la URL (comics)
+    return this.http.get(url);
+  }
+
+  /**
+   * @param _id contiene el id del personaje para la url
+   * @returns
+   */
+  getComic(_id:string): Observable<any> {
+    // Se obtiene la URL para acceder a un caracter especifico
+    const url: string = `${this.baseUrl}/comics/${_id}?ts=${this.timestamp}&apikey=${this.publicKey}&hash=${this.hash}`;
+    // Se devuelve un Observable con los resultados de la solicitud a la URL (caracter)
     return this.http.get(url);
   }
 
@@ -66,6 +88,17 @@ export class HomeService {
   }
 
   /**
+   * @param _id contiene el id del personaje para la url
+   * @returns
+   */
+  getEvent(_id:string): Observable<any> {
+    // Se obtiene la URL para acceder a un caracter especifico
+    const url: string = `${this.baseUrl}/events/${_id}?ts=${this.timestamp}&apikey=${this.publicKey}&hash=${this.hash}`;
+    // Se devuelve un Observable con los resultados de la solicitud a la URL (caracter)
+    return this.http.get(url);
+  }
+
+  /**
    * 
    * @param _pageNum contiene el número de la página para la url
    * @returns 
@@ -74,6 +107,17 @@ export class HomeService {
     this.page = parseInt(_pageNum)*parseInt(this.offset)+"";
     const url: string = `${this.baseUrl}/series?ts=${this.timestamp}&apikey=${this.publicKey}&hash=${this.hash}&offset=${this.page}`;
     // Se devuelve un Observable con los resultados de la solicitud a la URL (series)
+    return this.http.get(url);
+  }
+
+  /**
+   * @param _id contiene el id del personaje para la url
+   * @returns
+   */
+  getSerie(_id:string): Observable<any> {
+    // Se obtiene la URL para acceder a un caracter especifico
+    const url: string = `${this.baseUrl}/series/${_id}?ts=${this.timestamp}&apikey=${this.publicKey}&hash=${this.hash}`;
+    // Se devuelve un Observable con los resultados de la solicitud a la URL (caracter)
     return this.http.get(url);
   }
 
