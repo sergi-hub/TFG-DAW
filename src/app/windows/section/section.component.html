@@ -14,7 +14,7 @@
                                     {{ nombreRuta === 'characters' ? resultados[i].name : resultados[i].title }}
                                 </h5>
                                 <p class="card-text">
-                                    {{ resultados[i].description | nullOrEmpty }}
+                                    {{ resultados[i].description | nullOrEmpty : false }}
                                 </p>
                             </div>
                         </div>

@@ -14,6 +14,7 @@ import { SectionComponent } from './windows/section/section.component';
 import { NullOrEmptyPipe } from 'src/pipes/nullOrEmpty';
 import { PaginacionComponent } from './paginacion/paginacion.component';
 import { ItemDetailComponent } from './windows/item-detail/item-detail.component';
+import { ActualPagePipe } from 'src/pipes/actual-page.pipe';
 
 
 
@@ -28,7 +29,8 @@ import { ItemDetailComponent } from './windows/item-detail/item-detail.component
     FooterComponent,
     SectionComponent,
     PaginacionComponent,
-    ItemDetailComponent
+    ItemDetailComponent,
+    ActualPagePipe
   ],
   imports: [
     BrowserModule,

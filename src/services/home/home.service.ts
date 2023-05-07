@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from "rxjs";
-import * as CryptoJS from "crypto-js";
+import { Observable, forkJoin } from "rxjs";
+import CryptoJS from "crypto-js";
 
 @Injectable({
   providedIn: 'root'
@@ -121,6 +121,17 @@ export class HomeService {
     return this.http.get(url);
   }
 
+  /**
+   * 
+   * @param _collectionURI1 contiene una URI de una colección de datos
+   * @param _collectionURI2 contiene una URI de una colección de datos
+   * @returns 
+   */
+  getItems(_collectionURI1:string, _collectionURI2:string): Observable<any[]> {
+    const _request1 = this.http.get(_collectionURI1 + `?ts=${this.timestamp}&apikey=${this.publicKey}&hash=${this.hash}`); // Se almacena la llamada a la colección 1
+    const _request2 = this.http.get(_collectionURI2 + `?ts=${this.timestamp}&apikey=${this.publicKey}&hash=${this.hash}`); // Se almacena la llamada a la colección 2
 
+    return forkJoin([_request1, _request2]); // Se devuelve el resultado de las llamadas en una sola solicitud gracias al forkJoin
+  }
 
 }

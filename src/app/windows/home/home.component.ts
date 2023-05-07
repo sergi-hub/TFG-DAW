@@ -15,6 +15,8 @@ export class HomeComponent {
   events: any[] = [];
   series: any[] = [];
 
+  prueba: any[] = [];
+
   // Variable para indicar si los datos ya estan cargados o no
   charged: boolean = false;
 
@@ -60,7 +62,7 @@ export class HomeComponent {
           console.log("Ha habido un problema: " + e);
         }
 
-      })
+      })  
   }
 }
 
