@@ -6,7 +6,7 @@
     <div class="container" *ngIf="charged">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-12">
                     <div class="card mt-5 tarjeta">
                         <a class="link" [routerLink]="['/characters', characters[charactersNum].id]">
                             <div class="row no-gutters">
@@ -26,7 +26,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-12">
                     <div class="card mt-5 tarjeta">
                         <a class="link" [routerLink]="['/comics', comics[comicsNum].id]">
                             <div class="row no-gutters">
@@ -44,7 +44,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-12">
                     <div class="card mt-5 tarjeta">
                         <a class="link" [routerLink]="['/events', events[eventNum].id]">
                             <div class="row no-gutters">
@@ -64,7 +64,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-6 mb-5">
+                <div class="col-md-6 mb-5 col-sm-12">
                     <div class="card mt-5 tarjeta">
                         <a class="link" [routerLink]="['/series', series[serieNum].id]">
                             <div class="row no-gutters">

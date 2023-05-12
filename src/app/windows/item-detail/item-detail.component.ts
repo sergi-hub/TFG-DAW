@@ -23,11 +23,11 @@ export class ItemDetailComponent {
       this.items = [...resultados[0].data.results, ...resultados[1].data.results];
     },
     error: (error: any) => {
-      console.error('Error en la carga de datos', error);
+      console.error('Error al cargar los datos', error);
       this.cargado = true;
     },
     complete: () => {
-      console.log('Carga de datos completada');
+      console.log('Datos cargados correctamente');
       this.getURI();
       this.cargado = true; 
     }
@@ -35,7 +35,6 @@ export class ItemDetailComponent {
 
   constructor(private home:HomeService, private route:Router) {
     this.urlParts = this.route.url.split('/'); // Contiene las partes de la URL que las separa ('/')
-    //console.log(this.urlParts);
   }
 
   ngOnInit() {

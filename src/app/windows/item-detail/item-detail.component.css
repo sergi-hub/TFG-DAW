@@ -8,9 +8,13 @@
     src: url('../../../fonts/roboto/Roboto-Bold.ttf');
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+
 h2{
     color: white;
-    font-family: 'RobotoBold';
+    /* font-family: 'RobotoBold'; */
+    font-family: 'Bangers', cursive;
 }
 
 h3{
@@ -20,7 +24,7 @@ h3{
 
 p{
     color: white;
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
 }
 
 .col-md-2{
@@ -60,4 +64,24 @@ a img{
       flex-basis: 25%;
       max-width: 25%;
     }
+}
+
+    @media screen and (max-width: 770px) {
+        .col-md-2 {
+          flex-basis: 33%;
+          max-width: 33%;
+        }
+
+        h2{
+            margin-top: 1.5rem;
+        }
+
   }
+
+  @media screen and (max-width: 560px) {
+    .col-md-2 {
+      flex-basis: 50%;
+      max-width: 50%;
+    }
+
+}

@@ -7,7 +7,7 @@ import { NullOrEmptyPipe } from 'src/pipes/nullOrEmpty';
 @Component({
   selector: 'app-section',
   templateUrl: './section.component.html',
-  styleUrls: ['../home/home.component.css']// Ruta los estilos que hay en el css del home, ya que las tarjetas no cambian
+  styleUrls: ['./section.component.css']
 })
 export class SectionComponent {
 
