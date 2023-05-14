@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './windows/home/home.component';
 import { SectionComponent } from './windows/section/section.component';
 import { ItemDetailComponent } from './windows/item-detail/item-detail.component';
+import { LoginComponent } from './windows/login/login.component';
 
 // Define las rutas de la aplicación
 const routes: Routes = [
@@ -14,7 +15,9 @@ const routes: Routes = [
   { path: "series/page/:pg", component:SectionComponent}, // Ruta para la sección de series
   { path: "series/:id", component:ItemDetailComponent}, //Ruta para una serie específica
   { path: "comics/page/:pg", component:SectionComponent}, // Ruta para la sección de comics
-  { path: "comics/:id", component:ItemDetailComponent} //Ruta para un cómic específico
+  { path: "comics/:id", component:ItemDetailComponent}, //Ruta para un cómic específico
+  { path: "login", component:LoginComponent}, //Ruta para la pantalla de login/registro
+  { path: "login/:register", component:LoginComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,143 @@
+<!-- formulario de registro-->
+<div class="container" id="formRegistro" [hidden]="register">
+    <h1 style="color: white">Formulario de registro</h1>
+    <form>
+        <p style="color: red;" id="mensaje"></p>
+        <label for="nombre">Nombre de usuario (NICK)</label>
+        <input type="text" class="form-control" id="nombre" name="nombre">
+
+        <label for="email">Tu correo electrónico</label>
+        <input type="email" class="form-control" id="email" name="email">
+
+        <label for="email2">Escribe de nuevo tu correo electrónico</label>
+        <input type="email" class="form-control" id="email2" name="email2">
+
+
+        <label for="pwd"><b>Contraseña:</b></label>
+        <input type="password" class="form-control" id="pwd" name="pwd"><br>
+
+        <input type="checkbox" name="terms" value="tAerms"><span> Al hacer clic en el botón, estás manifestando estar de
+            acuerdo con nuestra "<span>privacidad de datos y condiciones de uso</span>".</span><br>
+        <div class="contenedor-boton">
+            <button type="submit" class="btn btn-primary" id="submit">Enviar datos</button>
+        </div>
+    </form>
+</div>
+
+
+
+<!-- formulario de inicio de sesion -->
+<div class="container" id="formInicio" [hidden]="login">
+    <h1 style="color: white;">Accede</h1>
+    <form>
+        <p style="color: red;" id="mensaje2"></p>
+        <!--Esto es el mensaje que debe salir para informar que ha ido mal el inicio de sesion-->
+        <p style="color:white">Entra o <a [routerLink]="['/login', 1]">registrate</a> para poder guardar los artículos
+            que mas te gusten.</p>
+        <label for="email">Correo electrónico:</label>
+        <input type="email" class="form-control" id="emailInicio" name="email">
+
+        <label for="pwd"><b>Contraseña:</b></label>
+        <input type="password" class="form-control" id="pwdInicio" name="pwd"><br>
+        <p><a [routerLink]="['/login', 2]">Has olvidado tu contraseña?</a></p>
+        <div class="contenedor-boton">
+            <button type="submit" class="btn btn-primary" id="submit2">Accede</button>
+        </div>
+    </form>
+</div>
+
+<!-- formulario de recuperación de contraseña-->
+<div class="container" [hidden]="lostPasswd">
+    <form>
+        <p style="color: white;" id="mensajeCorreo"></p>
+
+        <label for="email"><b>Correo electrónico:</b></label>
+        <input type="email" class="form-control" id="emailRecuperacion" name="email">
+
+        <div class="contenedor-boton mt-1">
+            <button type="submit" class="btn btn-primary" id="submit3">Recuperar contraseña</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // $(document).ready(function() {
+    //     //$('#formInicio').hide();
+
+    //     //**************LO DE ABAJO PARA VALIDAR FORMULARIO REGISTRO*****************
+    //     $("#formulario").submit(function(e) {
+    //         e.preventDefault();
+    //         var nombre = $("#nombre").val();
+    //         var email = $("#email").val();
+    //         var email2 = $("#email2").val();
+    //         var pwd = $("#pwd").val();
+    //         var provincia = $('#provincia').val();
+    //         var longitud = pwd.length;
+
+
+    //         var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,4}$/;
+
+    //         var textPattern = /[A-Za-z0-9_-]$/;
+
+    //         if (nombre === "" || email === "" || email2 === "" || !emailPattern.test(email) || !emailPattern.test(email2) || !textPattern.test(nombre) || !textPattern.test(pwd) || !$("input[type='checkbox']").is(":checked") || pwd === "" || longitud <= 8) {
+    //             // alert("Por favor, rellena todos los campos correctamente");
+
+    //             if (!textPattern.test(nombre) || !textPattern.test(pwd)) {
+    //                 $("#mensaje").text("⚠️ Los campos de texto no pueden contener espacios o caracteres extraños.");
+    //             } else {
+    //                 $("#mensaje").text("🙁 Por favor, rellena todos los campos correctamente");
+    //             }
+    //         } else {
+    //             if (email != email2) {
+    //                 alert("Los correos no coinciden");
+    //             } else {
+    //                 $.post("validar.php", {
+    //                         usuario: nombre,
+    //                         correo: email,
+    //                         contrasenia: pwd,
+    //                         provincia
+    //                     },
+    //                     function(data, status) {
+    //                         // alert("Datos: " + data + "\nEstado: " + status);
+    //                         $("#mensaje").text(data + "*");
+    //                         if (data === "😀 Usuario registrado con éxito.") {
+    //                             $("#nombre").val("");
+    //                             $("#email").val("");
+    //                             $("#email2").val("");
+    //                             $("#pwd").val("");
+    //                             $('#provincia').val("Alicante");
+    //                             $('#formRegistro').hide();
+    //                             $('#formInicio').show();
+    //                         }
+    //                     });
+    //             }
+    //         }
+    //     });
+
+
+    //     //**************LO DE ABAJO PARA VALIDAR FORMULARIO INICIO SESION*****************
+    //     $("#formularioInicio").submit(function(e) {
+    //         e.preventDefault();
+    //         var email = $("#emailInicio").val();
+    //         var pwd = $("#pwdInicio").val();
+    //         var longitud = pwd.length;
+
+
+    //         var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,4}$/;
+    //         var textPattern = /[A-Za-z0-9_-]$/;
+
+    //         $.post("validarInicio.php", {
+    //                 correo: email,
+    //                 contrasenia: pwd
+    //             },
+    //             function(data, status) {
+    //                 // alert("Datos: " + data + "\nEstado: " + status);
+    //                 $("#mensaje2").text(data + "*");
+    //                 if (data === "😀 Usuario encontrado correctamente") {
+    //                     $("#email").val("");
+    //                     $("#pwd").val("");
+    //                 }
+    //             });
+    //     });
+    // });
+</script>

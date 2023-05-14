@@ -74,3 +74,12 @@ li a:hover:after {
     cursor: pointer;
     z-index: 1;
 }
+
+@media screen and (max-width: 991px) {
+
+    .login{
+        display: flex;
+        justify-content: center;
+    }
+
+}

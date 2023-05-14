@@ -18,6 +18,7 @@ import { ActualPagePipe } from 'src/pipes/actual-page.pipe';
 import { SharedService } from 'src/services/shared.service';
 import { FormsModule } from '@angular/forms';
 import { RouteService } from 'src/services/route.service';
+import { LoginComponent } from './windows/login/login.component';
 
 
 
@@ -33,7 +34,8 @@ import { RouteService } from 'src/services/route.service';
     SectionComponent,
     PaginacionComponent,
     ItemDetailComponent,
-    ActualPagePipe
+    ActualPagePipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
