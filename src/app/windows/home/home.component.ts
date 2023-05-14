@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HomeService } from 'src/services/home/home.service';
 import { lastSlashFilter } from 'src/pipes/lastSlashFilter.pipe';
 import { forkJoin } from 'rxjs';
+import { SharedService } from 'src/services/shared.service';
 
 @Component({
   selector: 'app-home',
@@ -33,7 +34,7 @@ export class HomeComponent {
   comicsNum: number = 0;
   eventNum: number = 0;
 
-  constructor(private homeService: HomeService) {}
+  constructor(private homeService: HomeService, public shared: SharedService) {}
 
   ngOnInit() {
     // Se elige de forma aleatoria una serie, personaje, comic y evento

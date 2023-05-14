@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { HomeService } from 'src/services/home/home.service';
+import { SharedService } from 'src/services/shared.service';
 
 @Component({
   selector: 'app-paginacion',
@@ -15,7 +16,7 @@ export class PaginacionComponent {
 
   public num: number = 0; // Número de la página actual
 
-  constructor(private home:HomeService, private router:Router) {}
+  constructor(private home:HomeService, private router:Router, private shared: SharedService) {}
 
   ngOnInit() {
     this.num = parseInt(this.router.url.substring(this.router.url.lastIndexOf('/') + 1)); //Obtiene el número de la página actual a partir de la URL

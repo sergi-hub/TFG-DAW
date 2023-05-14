@@ -15,6 +15,9 @@ import { NullOrEmptyPipe } from 'src/pipes/nullOrEmpty';
 import { PaginacionComponent } from './paginacion/paginacion.component';
 import { ItemDetailComponent } from './windows/item-detail/item-detail.component';
 import { ActualPagePipe } from 'src/pipes/actual-page.pipe';
+import { SharedService } from 'src/services/shared.service';
+import { FormsModule } from '@angular/forms';
+import { RouteService } from 'src/services/route.service';
 
 
 
@@ -35,11 +38,14 @@ import { ActualPagePipe } from 'src/pipes/actual-page.pipe';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     HomeService,
-    SectionService
+    SectionService,
+    SharedService,
+    RouteService
   ],
   bootstrap: [AppComponent]
 })

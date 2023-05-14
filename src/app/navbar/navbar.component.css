@@ -28,7 +28,7 @@ li a {
     transition: 300ms all;
 }
 
-li a:hover{
+li a:hover {
     font-size: 1.2em;
     color: white;
 }
@@ -46,16 +46,31 @@ li a:after {
 
 li a:hover:after {
     left: 0;
-    
+
 }
 
-.buscar{
-    color: #8D9B50;
-    border: 1px solid #FFF;
-    transition: 300ms all;
+
+
+.disabled {
+    cursor: not-allowed;
+    background-color: white;
+    border-color: #dc3545;
+    box-shadow: 0 0 5px #dc3545;
 }
 
-.buscar:hover{
-    color: #FFF;
-    background-color: #8D9B50;
+.allowed {
+    cursor: auto;
+    border-color: #28a745;
+    box-shadow: 0 0 5px #28a745;
+}
+
+.clear-button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-55%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
 }

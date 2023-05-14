@@ -1,12 +1,12 @@
 <div class="container">
-    <div class="row">
+    <div class="row" *ngIf="filteredResults.length === 0; else filtrado">
         <div class="col-md-6 col-sm-12" *ngFor="let data of resultados; let i=index">
             <div class="card mt-5 tarjeta">
                 <a class="link" [routerLink]="['/'+nombreRuta, resultados[i].id]">
                     <div class="row no-gutters">
                         <div class="col-md-5">
-                            <img src="{{resultados[i].thumbnail.path}}.jpg" class="card-img-top img-fluid"
-                            alt="Descripción de la imagen">
+                            <img src="{{resultados[i].thumbnail.path}}.{{resultados[i].thumbnail.extension}}" class="card-img-top img-fluid"
+                                alt="Descripción de la imagen">
                         </div>
                         <div class="col-md-7">
                             <div class="card-body pb-0">
@@ -23,5 +23,33 @@
             </div>
         </div>
     </div>
+
+    <ng-template #filtrado>
+        <div class="row">
+            <div class="col-md-6 col-sm-12" *ngFor="let data of filteredResults">
+                <div class="card mt-5 tarjeta">
+                    <a class="link" [routerLink]="['/'+nombreRuta, data.id ]">
+                        <div class="row no-gutters">
+                            <div class="col-md-5">
+                                <img src="{{data.thumbnail.path}}.{{data.thumbnail.extension}}" class="card-img-top img-fluid"
+                                    alt="Descripción de la imagen">
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body pb-0">
+                                    <h5 class="card-title">
+                                        {{ nombreRuta === 'characters' ? data.name : data.title }}
+                                    </h5>
+                                    <p class="card-text">
+                                        {{ data.description | nullOrEmpty : false }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
     <app-paginacion [resultados]="resultados.length"></app-paginacion>
 </div>
