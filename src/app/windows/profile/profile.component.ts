@@ -26,7 +26,9 @@ export class ProfileComponent {
   deleteArticle(uri: string): void{
     const code: string = uri.slice(uri.lastIndexOf('/')+1);
     this.article.deleteUserArticle(this.user.id, code);
-    this.user.chargeArticles();
+    setTimeout(() => {
+      this.user.chargeArticles();
+    }, 100);
   }
 
   /**
