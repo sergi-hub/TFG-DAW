@@ -64,7 +64,7 @@
             acuerdo con nuestra "<span>privacidad de datos y condiciones de uso</span>".</span><br>
         <div class="contenedor-boton mt-2">
             <button type="submit" class="btn btn-primary" id="submit" [disabled]="!registerForm.valid"
-                (click)="submitFormRegister()">Crear
+                (click)="submitRegisterForm()">Crear
                 usuario</button>
         </div>
     </form>
@@ -92,15 +92,15 @@
 </div>
 
 <!-- formulario de recuperación de contraseña-->
-<div class="container" [hidden]="lostPasswd">
-    <form>
-        <p style="color: white;" id="mensajeCorreo"></p>
+<div class="container mt-3" [hidden]="lostPasswd">
+    <form [formGroup]="recoverForm">
+        <p style="color: red;" *ngIf="!emailExists">*Lo sentimos, no existe ningún correo relacionado con dichas credenciales</p>
 
         <label for="email"><b>Correo electrónico:</b></label>
-        <input type="email" class="form-control" id="emailRecuperacion" name="email">
+        <input type="email" class="form-control" id="emailRecuperacion" name="email" formControlName="email">
 
         <div class="contenedor-boton mt-1">
-            <button type="submit" class="btn btn-primary" id="submit3">Recuperar contraseña</button>
+            <button type="submit" class="btn btn-primary" id="submit3" (click)="submitRecoverForm()" [disabled]="!recoverForm.valid">Recuperar contraseña</button>
         </div>
     </form>
 </div>

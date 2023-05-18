@@ -31,6 +31,13 @@ export class UsersService {
 
   constructor(private http: HttpClient, private countries: CountriesService, private articles: ArticlesService, private home: HomeService) { }
 
+
+  /**
+   * Este método se encarga de enviar la información del usuario que se esta registando a la api para que ésta,
+   * la guarde en la BBDD
+   * @param user Contiene la información del usuario
+   * @returns 
+   */
   insertUser(user: user): Observable<boolean> {
    return this.http.post(this.url+'s/', user).pipe(
       map(() => {
@@ -65,6 +72,34 @@ export class UsersService {
   getUser(email: string, passwd: string): Observable<any>{
     return this.http.get(this.url + `/${email}/${passwd}`);
   }
+
+
+  /**
+   * Este método hace una llamada a la api que se encarga de devolvernos de la base de datos algun campo que coincida
+   * con el correo que le hemos pasado.
+   */
+  getUserEmail(email: string): Observable<any>{
+    return this.http.get(this.url + `/${email}`)
+  }
+
+  /**
+   * Este método envia el correo electróncio a través de la api
+   * @param body contiene el email y la contraseña de recuperación
+   * @returns 
+   */
+  sendUserEmail(body: any): Observable<boolean>{
+    return this.http.post('http://localhost:3000/api/send-email', body).pipe(
+      map(() => {
+        console.log('Correo enviado correctamente');
+        return true;
+      }),
+      catchError((error) => {
+        console.error('Error al enviar el correo', error);
+        return of(false);
+      })
+    );
+  }
+
 
   /**
    * Este método se usará para asignar los valores del usuario cuando se logee, ya que en este servicio se almacenarán sus datos

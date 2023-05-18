@@ -36,6 +36,19 @@ exports.getUser = (req, res) => {
    
 }
 
+// Definimos que hará getUserEmail, que recuperará un usuario con dicho email si existe
+exports.getUserEmailPass = (req, res) => {
+    const email = req.params.email;
+
+    connection.query(`SELECT email, passwd FROM users WHERE email='${email}'`, (error, results, fields) => {
+        if (error) {
+            console.error('Error al obtener el email: ' + error.stack);
+            return;
+        }
+        res.json(results);
+    });
+}
+
 
 // Definimos que hará insertUsers, el cual se encarga de obtener los valores del nuevo usuario e añadirlo a la base de datos
 exports.insertUsers = (req, res) => {

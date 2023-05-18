@@ -1,9 +1,10 @@
 // Se importa el módulo de express y se crea una instancia
-// También se importan todos los módulos que son necesarios
+// También se importan todos los módulos que son necesarios, entre ellos el nodemailer, para poder enviar correos
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const routes = require('./routes/routes');
+const nodemailer = require('nodemailer');
 
 const app = express();
 
@@ -26,3 +27,18 @@ const port = 3000;
 app.listen(port, () =>{
     console.log(`Server Express listening at port: ${port}`);
 })
+
+// Configuración para poder enviar los correos
+const transporter = nodemailer.createTransport({
+    service: 'Outlook',
+    auth: {
+        user: 'sergi26072002@outlook.es',
+        pass: 'Sergi1234',
+    },
+});
+
+// Se agrega la configuración del transportador de correos electrónicos
+app.set('transporter', transporter);
+
+
+module.exports = app;

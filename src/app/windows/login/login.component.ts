@@ -35,6 +35,8 @@ export class LoginComponent {
   // Indica si existe el usuario o no para mostrar el mensaje en la vista
   public exists: boolean = false;
 
+  public emailExists: boolean = true;
+
   // Indica si ha habido un error al insertar el usuario
   public error: boolean = false;
   //Indica si ha ido bien la insercion del usuaio
@@ -43,6 +45,7 @@ export class LoginComponent {
   // Variable que contiene el formulario
   registerForm: FormGroup;
   sesionForm: FormGroup;
+  recoverForm: FormGroup;
 
   constructor(private route: ActivatedRoute, private countrie: CountriesService, private formBuilder: FormBuilder, private users: UsersService, private router: Router) {
     // Obtenemos los paises del desplegable haciendo la llamada a la api
@@ -65,6 +68,10 @@ export class LoginComponent {
     this.sesionForm = this.formBuilder.group({
       email: ['sergisignes2002@gmail.com', [Validators.required, Validators.email]],
       passwd: ['11111111', [Validators.required, Validators.pattern(this.textPattern2)]]
+    });
+
+    this.recoverForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]]
     });
 
   }
@@ -113,7 +120,7 @@ export class LoginComponent {
    * que se ha introducido en los campos y el email, una vez cargado, si ha devuelto algo, se informara de que el usuario ya existe
    * sino, se creará
    */
-  submitFormRegister(){
+  submitRegisterForm(): void{
     this.users.getUsers(this.registerForm.get('nick')?.value, this.registerForm.get('email')?.value)
       .pipe(
         finalize(() => { // Esto se ejecutará al terminar el subscribe de abajo
@@ -156,11 +163,10 @@ export class LoginComponent {
    * Este es el método que se ejecuta al enviar el formulario de login, en el se hace una llamada a la api, se comprueba si existe el usuario, si existe se logea,
    * en caso contrario, mostrará un mensaje
    */
-  submitLogin() {
+  submitLogin(): void {
     this.users.getUser(this.sesionForm.get('email')?.value, this.sesionForm.get('passwd')?.value)
       .pipe(
         finalize(() => { // Esto se ejecutará al terminar el subscribe de abajo
-          console.log(this.user);
           if(this.user.length !== 0){
             this.users.setUser(this.user[0]); // Mandamos los datos del usuario al servicio que los almacenará en variables
             this.router.navigate(['']); // Navegamos a la ventana home
@@ -170,6 +176,49 @@ export class LoginComponent {
       )
       .subscribe(data => {
         this.user = data;
+      });
+  }
+
+
+  /**
+   * Método que se ejecuta al enviar el formulario de recuperación de contraseña
+   * Se comprueba que el correo se encuentra registrado para enviarle la contraseña
+   */
+  submitRecoverForm(): void{
+    let info: any;
+    let successful: boolean;
+
+    // Con el finalize, nos aseguramos a que ha terminado la llamada y tenemos los datos
+    this.users.getUserEmail(this.recoverForm.get('email')?.value)
+      .pipe(
+        finalize(() => {
+          if(info.length !== 0){ // Comprobamos que el usuario existe
+            const body = {
+              to: info[0].email,
+              body: info[0].passwd
+            }
+
+            // Una vez finalizado el envio, mostramos un mensaje al usuario
+            this.users.sendUserEmail(body)
+              .pipe(
+                finalize(() => {
+                  if(successful){
+                     alert('Correo enviado satisfactoriamente, por favor, revise la bandeja de entrada de su correo electrónico');
+                     this.router.navigate(['/login']);
+                  }
+                })
+              )
+              .subscribe(data =>{
+                successful = data;
+            });
+
+          }else{ // Si no existe mostraremos un mensaje al usuario
+            console.log('Correo inexistente');
+            this.emailExists = false;
+          }
+        })
+      ).subscribe(data => {
+         info = data;
       });
   }
 
