@@ -4,6 +4,7 @@ import { SharedService } from 'src/services/shared.service';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { RouteService } from 'src/services/route.service';
+import { UsersService } from 'src/services/users.service';
 
 @Component({
   selector: 'app-navbar',
@@ -18,7 +19,7 @@ export class NavbarComponent {
 
   public inputDisabled: boolean = false;
 
-  constructor(private home: HomeService, public shared: SharedService, private route: ActivatedRoute, private actualRoute: RouteService) {
+  constructor(private home: HomeService, public shared: SharedService, private route: ActivatedRoute, private actualRoute: RouteService, public user: UsersService) {
     this.page = home.page; //Obtiene la página por defecto del servicio Home (0)
   }
 

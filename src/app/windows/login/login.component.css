@@ -13,3 +13,7 @@ label{
 span{
     color: white;
 }
+
+.error-message{
+    color: rgb(218, 36, 36);
+}

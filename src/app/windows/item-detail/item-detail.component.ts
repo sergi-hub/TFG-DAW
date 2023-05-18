@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ArticlesService } from 'src/services/articles.service';
 import { HomeService } from 'src/services/home/home.service';
+import { UsersService } from 'src/services/users.service';
 
 @Component({
   selector: 'app-item-detail',
@@ -33,7 +35,7 @@ export class ItemDetailComponent {
     }
   };
 
-  constructor(private home:HomeService, private route:Router) {
+  constructor(private home:HomeService, private route:Router, private article: ArticlesService, public user: UsersService) {
     this.urlParts = this.route.url.split('/'); // Contiene las partes de la URL que las separa ('/')
   }
 
@@ -49,7 +51,7 @@ export class ItemDetailComponent {
     if(this.urlParts[1] === 'characters'){ // Se comprueba si la url pertenece a characters
       this.home.getCharacter(this.urlParts[2]).subscribe(resultados => { // Se obtienen los datos del personaje a partir del Id
         this.item = resultados.data.results[0];
-
+        
         this.home.getItems(this.item.comics.collectionURI, this.item.series.collectionURI).subscribe(this.observer);
       }); 
     }else if(this.urlParts[1] === 'events'){ // Se comprueba si la url pertenece a events
@@ -87,6 +89,21 @@ export class ItemDetailComponent {
 
       this.uris.push(_URI); // Se guarda la cadena generada
     } 
+  }
+
+  /**
+   * Método del botón de guardado de articulos
+   */
+  saveArticle(): void{
+    const article = {
+      type: this.urlParts[1],
+      code: this.urlParts[2],
+      fk_user: this.user.id
+    }
+    this.article.saveArticle(article);
+    this.user.chargeArticles(); // Cuando guardamos un artículo, es importante ejecutar de nuevo este método, 
+                                // ya que se encargará de refrescar los artículos guardados y permitirá que aparezca el nuevo en el perfil
+    console.log(this.user.chargedArticles);
   }
 
 

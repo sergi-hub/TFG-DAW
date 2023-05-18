@@ -23,7 +23,7 @@
                 </li>
             </ul>
             <div class="navbar-text d-flex justify-content-center">
-                <a href="">
+                <a [routerLink]="['']">
                     <img src="../../img/MarvelLogo.jpg" alt="Logo Marvel" width="150px" height="60px">
                 </a>
             </div>
@@ -39,7 +39,8 @@
             </form>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item login">
-                <a class="nav-link" [routerLink]="['/login']" aria-current="page">Login</a>
+                <a class="nav-link" [routerLink]="['/login']" aria-current="page" [hidden]="user.loged">Login</a>
+                <a class="nav-link" [routerLink]="['/profile']" aria-current="page" [hidden]="!user.loged">Bienvenido {{ user.nick }}</a>
             </li>
         </ul>
         </div>

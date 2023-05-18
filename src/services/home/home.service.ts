@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, forkJoin } from "rxjs";
+import { Observable, forkJoin, map } from "rxjs";
 import CryptoJS from "crypto-js";
+import { UsersService } from '../users.service';
 
 @Injectable({
   providedIn: 'root'
@@ -133,5 +134,31 @@ export class HomeService {
 
     return forkJoin([_request1, _request2]); // Se devuelve el resultado de las llamadas en una sola solicitud gracias al forkJoin
   }
+
+
+  /**
+   * Se van a cargar los articulos del usuario haciendo las llamadas a la api a partir del id del arcitulo y el tipo (serie, comic...)
+   * @param articles contiene los id y tipo de aritculo de cada articulo que tiene guardado en la base de datos el usuario
+   * @returns 
+   */
+  getSavedArticles(articles: any[]): Observable<any> {
+    const chargedArticles: any[] = [];
+
+    const requests = articles.map((article) => {
+    const url = `${this.baseUrl}/${article.type}/${article.code}?ts=${this.timestamp}&apikey=${this.publicKey}&hash=${this.hash}`;
+    return this.http.get(url);
+  });
+
+  return forkJoin(requests).pipe(
+    map((responses: any[]) => {
+      responses.forEach((response) => {
+        chargedArticles.push(response.data.results);
+      });
+      return chargedArticles;
+    })
+  );
+  }
+
+
 
 }

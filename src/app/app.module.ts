@@ -16,9 +16,13 @@ import { PaginacionComponent } from './paginacion/paginacion.component';
 import { ItemDetailComponent } from './windows/item-detail/item-detail.component';
 import { ActualPagePipe } from 'src/pipes/actual-page.pipe';
 import { SharedService } from 'src/services/shared.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouteService } from 'src/services/route.service';
 import { LoginComponent } from './windows/login/login.component';
+import { CountriesService } from 'src/services/countries.service';
+import { UsersService } from 'src/services/users.service';
+import { ArticlesService } from 'src/services/articles.service';
+import { ProfileComponent } from './windows/profile/profile.component';
 
 
 
@@ -35,19 +39,24 @@ import { LoginComponent } from './windows/login/login.component';
     PaginacionComponent,
     ItemDetailComponent,
     ActualPagePipe,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     HomeService,
     SectionService,
     SharedService,
-    RouteService
+    RouteService,
+    CountriesService,
+    UsersService,
+    ArticlesService
   ],
   bootstrap: [AppComponent]
 })

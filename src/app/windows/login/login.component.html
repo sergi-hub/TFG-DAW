@@ -1,25 +1,71 @@
 <!-- formulario de registro-->
 <div class="container" id="formRegistro" [hidden]="register">
     <h1 style="color: white">Formulario de registro</h1>
-    <form>
-        <p style="color: red;" id="mensaje"></p>
-        <label for="nombre">Nombre de usuario (NICK)</label>
-        <input type="text" class="form-control" id="nombre" name="nombre">
+    <form [formGroup]="registerForm">
+
+        <p class="error-message" *ngIf="exists">*Lo siento, ya existe un
+            usuario asociado a este correo o nombre de usuario.</p>
+        <p class="error-message" *ngIf="error">*🙁Lo sentimos, algo ha ido mal al registrar el usuario, intentelo de nuevo
+            mas tarde.</p>
+
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" formControlName="name" required>
+
+        <div *ngIf="!registerForm.get('name')?.errors?.['required']">
+            <p class="error-message" *ngIf="registerForm.get('name')?.errors?.['pattern']">*No se pueden introducir
+                espacios, números ni caracteres extraños.</p>
+        </div>
+
+        <label for="nick">Nombre de usuario</label>
+        <input type="text" class="form-control" id="nick" name="nick" formControlName="nick" required>
+
+        <div *ngIf="!registerForm.get('nick')?.errors?.['required']">
+            <p class="error-message" *ngIf="registerForm.get('nick')?.errors?.['pattern']">*No se pueden introducir
+                espacios ni caracteres extraños.</p>
+            <p class="error-message" *ngIf="registerForm.get('nick')?.errors?.['maxlength']">*El nombre de usuario debe
+                tener menos de 12 caracteres.</p>
+        </div>
 
         <label for="email">Tu correo electrónico</label>
-        <input type="email" class="form-control" id="email" name="email">
+        <input type="email" class="form-control" id="email" name="email" formControlName="email" required>
+
+        <div *ngIf="!registerForm.get('email')?.errors?.['required']">
+            <p class="error-message" *ngIf="registerForm.get('email')?.errors?.['email']">*Rellene el campo
+                correctamente.</p>
+        </div>
 
         <label for="email2">Escribe de nuevo tu correo electrónico</label>
-        <input type="email" class="form-control" id="email2" name="email2">
+        <input type="email" class="form-control" id="email2" name="email2" formControlName="email2" required>
 
+        <div *ngIf="!registerForm.get('email2')?.errors?.['required']">
+            <p class="error-message" *ngIf="registerForm.get('email2')?.errors?.['email']">*Rellene el campo
+                correctamente.</p>
+            <p class="error-message" *ngIf="registerForm.hasError('differentEmails')">*Los correos no coinciden.</p>
+        </div>
+
+        <label for="pais">Nacionalidad</label>
+        <select class="form-control" formControlName="nationality" required>
+            <option *ngFor="let countrie of countries" [value]="countrie.id">{{countrie.countryName}}</option>
+        </select>
 
         <label for="pwd"><b>Contraseña:</b></label>
-        <input type="password" class="form-control" id="pwd" name="pwd"><br>
+        <input type="password" class="form-control" id="pwd" name="pwd" formControlName="passwd" required
+            minlength="8"><br>
 
-        <input type="checkbox" name="terms" value="tAerms"><span> Al hacer clic en el botón, estás manifestando estar de
+        <div *ngIf="!registerForm.get('passwd')?.errors?.['required']">
+            <p class="error-message" *ngIf="registerForm.get('passwd')?.errors?.['pattern']">*No se pueden introducir
+                espacios ni caracteres extraños.</p>
+            <p class="error-message" *ngIf="registerForm.get('passwd')?.errors?.['minlength']">*La contraseña debe tener
+                almenos 8 caracteres.</p>
+        </div>
+
+        <input type="checkbox" name="terms" value="tAerms" formControlName="acceptTerms" required><span> *Al hacer clic
+            en el botón, estás manifestando estar de
             acuerdo con nuestra "<span>privacidad de datos y condiciones de uso</span>".</span><br>
-        <div class="contenedor-boton">
-            <button type="submit" class="btn btn-primary" id="submit">Enviar datos</button>
+        <div class="contenedor-boton mt-2">
+            <button type="submit" class="btn btn-primary" id="submit" [disabled]="!registerForm.valid"
+                (click)="submitFormRegister()">Crear
+                usuario</button>
         </div>
     </form>
 </div>
@@ -28,20 +74,19 @@
 
 <!-- formulario de inicio de sesion -->
 <div class="container" id="formInicio" [hidden]="login">
-    <h1 style="color: white;">Accede</h1>
-    <form>
-        <p style="color: red;" id="mensaje2"></p>
-        <!--Esto es el mensaje que debe salir para informar que ha ido mal el inicio de sesion-->
+    <p style="color: green" class="mt-2" *ngIf="successful">😀Enhorabuena, se ha registrado satisfactoriamente.</p>
+    <h1 style="color: white;" class="mt-2">Accede</h1>
+    <form [formGroup]="sesionForm">
         <p style="color:white">Entra o <a [routerLink]="['/login', 1]">registrate</a> para poder guardar los artículos
             que mas te gusten.</p>
         <label for="email">Correo electrónico:</label>
-        <input type="email" class="form-control" id="emailInicio" name="email">
+        <input type="email" class="form-control" id="emailInicio" name="email" formControlName="email">
 
         <label for="pwd"><b>Contraseña:</b></label>
-        <input type="password" class="form-control" id="pwdInicio" name="pwd"><br>
+        <input type="password" class="form-control" id="pwdInicio" name="pwd" formControlName="passwd"><br>
         <p><a [routerLink]="['/login', 2]">Has olvidado tu contraseña?</a></p>
         <div class="contenedor-boton">
-            <button type="submit" class="btn btn-primary" id="submit2">Accede</button>
+            <button type="submit" class="btn btn-primary" id="submit2" [disabled]="!sesionForm.valid" (click)="submitLogin()">Accede</button>
         </div>
     </form>
 </div>
@@ -59,85 +104,3 @@
         </div>
     </form>
 </div>
-
-<script>
-    // $(document).ready(function() {
-    //     //$('#formInicio').hide();
-
-    //     //**************LO DE ABAJO PARA VALIDAR FORMULARIO REGISTRO*****************
-    //     $("#formulario").submit(function(e) {
-    //         e.preventDefault();
-    //         var nombre = $("#nombre").val();
-    //         var email = $("#email").val();
-    //         var email2 = $("#email2").val();
-    //         var pwd = $("#pwd").val();
-    //         var provincia = $('#provincia').val();
-    //         var longitud = pwd.length;
-
-
-    //         var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,4}$/;
-
-    //         var textPattern = /[A-Za-z0-9_-]$/;
-
-    //         if (nombre === "" || email === "" || email2 === "" || !emailPattern.test(email) || !emailPattern.test(email2) || !textPattern.test(nombre) || !textPattern.test(pwd) || !$("input[type='checkbox']").is(":checked") || pwd === "" || longitud <= 8) {
-    //             // alert("Por favor, rellena todos los campos correctamente");
-
-    //             if (!textPattern.test(nombre) || !textPattern.test(pwd)) {
-    //                 $("#mensaje").text("⚠️ Los campos de texto no pueden contener espacios o caracteres extraños.");
-    //             } else {
-    //                 $("#mensaje").text("🙁 Por favor, rellena todos los campos correctamente");
-    //             }
-    //         } else {
-    //             if (email != email2) {
-    //                 alert("Los correos no coinciden");
-    //             } else {
-    //                 $.post("validar.php", {
-    //                         usuario: nombre,
-    //                         correo: email,
-    //                         contrasenia: pwd,
-    //                         provincia
-    //                     },
-    //                     function(data, status) {
-    //                         // alert("Datos: " + data + "\nEstado: " + status);
-    //                         $("#mensaje").text(data + "*");
-    //                         if (data === "😀 Usuario registrado con éxito.") {
-    //                             $("#nombre").val("");
-    //                             $("#email").val("");
-    //                             $("#email2").val("");
-    //                             $("#pwd").val("");
-    //                             $('#provincia').val("Alicante");
-    //                             $('#formRegistro').hide();
-    //                             $('#formInicio').show();
-    //                         }
-    //                     });
-    //             }
-    //         }
-    //     });
-
-
-    //     //**************LO DE ABAJO PARA VALIDAR FORMULARIO INICIO SESION*****************
-    //     $("#formularioInicio").submit(function(e) {
-    //         e.preventDefault();
-    //         var email = $("#emailInicio").val();
-    //         var pwd = $("#pwdInicio").val();
-    //         var longitud = pwd.length;
-
-
-    //         var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,4}$/;
-    //         var textPattern = /[A-Za-z0-9_-]$/;
-
-    //         $.post("validarInicio.php", {
-    //                 correo: email,
-    //                 contrasenia: pwd
-    //             },
-    //             function(data, status) {
-    //                 // alert("Datos: " + data + "\nEstado: " + status);
-    //                 $("#mensaje2").text(data + "*");
-    //                 if (data === "😀 Usuario encontrado correctamente") {
-    //                     $("#email").val("");
-    //                     $("#pwd").val("");
-    //                 }
-    //             });
-    //     });
-    // });
-</script>
