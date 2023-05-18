@@ -25,7 +25,7 @@ exports.getUser = (req, res) => {
     if(!emailPattern.test(email) || !passwdPattern.test(passwd)){
         res.status(400).json({ message: 'Error en los datos de entrada'});
     }else{
-        connection.query(`SELECT id, name, nick, email, creation, fk_country FROM users WHERE email='${email}' and passwd='${passwd}'`, (error, results, fields) => {
+        connection.query(`SELECT id, name, nick, passwd, email, creation, fk_country FROM users WHERE email='${email}' and passwd='${passwd}'`, (error, results, fields) => {
             if (error) {
                 console.error('Error al obtener los usuarios: ' + error.stack);
                 return;

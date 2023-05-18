@@ -103,7 +103,6 @@ export class ItemDetailComponent {
     this.article.saveArticle(article);
     this.user.chargeArticles(); // Cuando guardamos un artículo, es importante ejecutar de nuevo este método, 
                                 // ya que se encargará de refrescar los artículos guardados y permitirá que aparezca el nuevo en el perfil
-    console.log(this.user.chargedArticles);
   }
 
 

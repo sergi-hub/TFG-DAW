@@ -13,10 +13,10 @@ export class ProfileComponent {
   constructor(public user: UsersService, private router: Router, private article: ArticlesService) {}
 
   ngOnInit(): void{
-    if(!this.user.loged){
+    // Si el usuario no esta logeado, lo empujamos a la página de login, usamos tambien la comprobacion de sessionStorage por si ha refrescado la pagina
+    if(!this.user.loged && sessionStorage.length === 0){
       this.router.navigate(['/login']);
     }
-    console.log(this.user.chargedArticles);
   }
 
   /**

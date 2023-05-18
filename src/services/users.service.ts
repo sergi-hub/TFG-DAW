@@ -113,9 +113,13 @@ export class UsersService {
     this.creation = object.creation;
     this.country_id = object.fk_country;
 
+
     this.countries.getUserCountrie(this.country_id, this.nick).subscribe(data => {
       this.country = data[0].countryName;
     });
+
+    sessionStorage.setItem('email', object.email);
+    sessionStorage.setItem('passwd', object.passwd);
 
    this.chargeArticles();
 
@@ -133,6 +137,8 @@ export class UsersService {
     this.creation = '';
     this.country_id = -1;
     this.loged = false;
+
+    sessionStorage.clear();
 
     this.savedArticles = [];
     this.chargedArticles = [];

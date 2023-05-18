@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { RouteService } from 'src/services/route.service';
 import { UsersService } from 'src/services/users.service';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -19,7 +20,9 @@ export class NavbarComponent {
 
   public inputDisabled: boolean = false;
 
-  constructor(private home: HomeService, public shared: SharedService, private route: ActivatedRoute, private actualRoute: RouteService, public user: UsersService) {
+  private user: any[] = [];
+
+  constructor(private home: HomeService, public shared: SharedService, private route: ActivatedRoute, private actualRoute: RouteService, public users: UsersService) {
     this.page = home.page; //Obtiene la página por defecto del servicio Home (0)
   }
 
@@ -35,6 +38,27 @@ export class NavbarComponent {
         this.inputDisabled = true;
       }
     });
+
+
+    const email = sessionStorage.getItem('email');
+    const passwd = sessionStorage.getItem('passwd');
+    if(email !== null && passwd !== null){
+      this.users.getUser(email, passwd)
+      .pipe(
+        finalize(() => { // Esto se ejecutará al terminar el subscribe de abajo
+          if(this.user.length !== 0){
+            this.users.setUser(this.user[0]); // Mandamos los datos del usuario al servicio que los almacenará en variables
+            //this.router.navigate(['']); // Navegamos a la ventana home
+            console.log('Bienvenido ' + this.users.name);
+          }
+        })
+      )
+      .subscribe(data => {
+        this.user = data;
+      });
+      console.log('He pasado por aqui');
+    }
+
   }
 
   /**

@@ -168,6 +168,7 @@ export class LoginComponent {
       .pipe(
         finalize(() => { // Esto se ejecutará al terminar el subscribe de abajo
           if(this.user.length !== 0){
+            console.log(this.user[0]);
             this.users.setUser(this.user[0]); // Mandamos los datos del usuario al servicio que los almacenará en variables
             this.router.navigate(['']); // Navegamos a la ventana home
             console.log('Bienvenido ' + this.users.name);
