@@ -1,0 +1,19 @@
+p{
+    color: white;
+}
+
+h1{
+    color: white;
+}
+
+label{
+    color: white;
+}
+
+span{
+    color: white;
+}
+
+.error-message{
+    color: rgb(218, 36, 36);
+}

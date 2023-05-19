@@ -1,0 +1,91 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../../../fonts/roboto/Roboto-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'RobotoBold';
+    src: url('../../../fonts/roboto/Roboto-Bold.ttf');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+
+h2{
+    color: white;
+    font-family: 'Avenger', cursive;
+}
+
+h3{
+    color: white;
+    font-family: 'Avenger', cursive;
+}
+
+p{
+    color: white;
+    font-family: 'Marvel', cursive;
+}
+
+button{
+    font-family: 'Avenger', cursive;
+    font-weight: bold;
+}
+
+.col-md-2{
+    transition: all 0.6s;
+}
+
+.col-md-2:hover{
+    transform: translateY(-10px);
+}
+
+.link{
+    text-decoration: none;
+}
+
+.col-md-2 .link p{
+    transition: all 0.6s;
+}
+
+.col-md-2:hover .link p{
+    color: #F2360C;
+}
+
+a img{
+    box-shadow: 0px 5px 5px -5px #F2360C;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .col-md-2 {
+      flex-basis: 20%;
+      max-width: 20%;
+    }
+  }
+
+  @media screen and (max-width: 990px) {
+    .col-md-2 {
+      flex-basis: 25%;
+      max-width: 25%;
+    }
+}
+
+    @media screen and (max-width: 770px) {
+        .col-md-2 {
+          flex-basis: 33%;
+          max-width: 33%;
+        }
+
+        h2{
+            margin-top: 1.5rem;
+        }
+
+  }
+
+  @media screen and (max-width: 560px) {
+    .col-md-2 {
+      flex-basis: 50%;
+      max-width: 50%;
+    }
+
+}

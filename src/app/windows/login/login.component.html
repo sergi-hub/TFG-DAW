@@ -1,0 +1,107 @@
+<!-- formulario de registro-->
+<div class="container" id="formRegistro" [hidden]="register">
+    <h1 style="color: white">Formulario de registro</h1>
+    <form [formGroup]="registerForm">
+
+        <p class="error-message" *ngIf="exists">*Lo siento, ya existe un
+            usuario asociado a este correo o nombre de usuario.</p>
+        <p class="error-message" *ngIf="error">*🙁Lo sentimos, algo ha ido mal al registrar el usuario, intentelo de nuevo
+            mas tarde.</p>
+
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" formControlName="name" required>
+
+        <div *ngIf="!registerForm.get('name')?.errors?.['required']">
+            <p class="error-message" *ngIf="registerForm.get('name')?.errors?.['pattern']">*No se pueden introducir
+                espacios, números ni caracteres extraños.</p>
+        </div>
+
+        <label for="nick">Nombre de usuario</label>
+        <input type="text" class="form-control" id="nick" name="nick" formControlName="nick" required>
+
+        <div *ngIf="!registerForm.get('nick')?.errors?.['required']">
+            <p class="error-message" *ngIf="registerForm.get('nick')?.errors?.['pattern']">*No se pueden introducir
+                espacios ni caracteres extraños.</p>
+            <p class="error-message" *ngIf="registerForm.get('nick')?.errors?.['maxlength']">*El nombre de usuario debe
+                tener menos de 12 caracteres.</p>
+        </div>
+
+        <label for="email">Tu correo electrónico</label>
+        <input type="email" class="form-control" id="email" name="email" formControlName="email" required>
+
+        <div *ngIf="!registerForm.get('email')?.errors?.['required']">
+            <p class="error-message" *ngIf="registerForm.get('email')?.errors?.['email']">*Rellene el campo
+                correctamente.</p>
+        </div>
+
+        <label for="email2">Escribe de nuevo tu correo electrónico</label>
+        <input type="email" class="form-control" id="email2" name="email2" formControlName="email2" required>
+
+        <div *ngIf="!registerForm.get('email2')?.errors?.['required']">
+            <p class="error-message" *ngIf="registerForm.get('email2')?.errors?.['email']">*Rellene el campo
+                correctamente.</p>
+            <p class="error-message" *ngIf="registerForm.hasError('differentEmails')">*Los correos no coinciden.</p>
+        </div>
+
+        <label for="pais">Nacionalidad</label>
+        <select class="form-control" formControlName="nationality" required>
+            <option *ngFor="let countrie of countries" [value]="countrie.id">{{countrie.countryName}}</option>
+        </select>
+
+        <label for="pwd"><b>Contraseña:</b></label>
+        <input type="password" class="form-control" id="pwd" name="pwd" formControlName="passwd" required
+            minlength="8"><br>
+
+        <div *ngIf="!registerForm.get('passwd')?.errors?.['required']">
+            <p class="error-message" *ngIf="registerForm.get('passwd')?.errors?.['pattern']">*No se pueden introducir
+                espacios ni caracteres extraños.</p>
+            <p class="error-message" *ngIf="registerForm.get('passwd')?.errors?.['minlength']">*La contraseña debe tener
+                almenos 8 caracteres.</p>
+        </div>
+
+        <input type="checkbox" name="terms" value="tAerms" formControlName="acceptTerms" required><span> *Al hacer clic
+            en el botón, estás manifestando estar de
+            acuerdo con nuestra "<a [routerLink]="['/terms']">privacidad de datos y condiciones de uso</a>".</span><br>
+        <div class="contenedor-boton mt-2">
+            <button type="submit" class="btn btn-primary" id="submit" [disabled]="!registerForm.valid"
+                (click)="submitRegisterForm()">Crear
+                usuario</button>
+        </div>
+    </form>
+</div>
+
+
+
+<!-- formulario de inicio de sesion -->
+<div class="container" id="formInicio" [hidden]="login">
+    <p style="color: green" class="mt-2" *ngIf="shared.succes">😀Enhorabuena, se ha registrado satisfactoriamente.</p>
+    <h1 style="color: white;" class="mt-2">Accede</h1>
+    <form [formGroup]="sesionForm">
+        <p style="color:white">Entra o <a [routerLink]="['/login', 1]">registrate</a> para poder guardar los artículos
+            que mas te gusten.</p>
+        <label for="email">Correo electrónico:</label>
+        <input type="email" class="form-control" id="emailInicio" name="email" formControlName="email">
+
+        <label for="pwd"><b>Contraseña:</b></label>
+        <input type="password" class="form-control" id="pwdInicio" name="pwd" formControlName="passwd"><br>
+        <p style="color: red;" *ngIf="!emailExists">*Lo sentimos, no existe ningún correo relacionado con dichas credenciales.</p>
+        <p><a [routerLink]="['/login', 2]">Has olvidado tu contraseña?</a></p>
+        <div class="contenedor-boton">
+            <button type="submit" class="btn btn-primary" id="submit2" [disabled]="!sesionForm.valid" (click)="submitLogin()">Accede</button>
+        </div>
+    </form>
+</div>
+
+<!-- formulario de recuperación de contraseña-->
+<div class="container mt-3" [hidden]="lostPasswd">
+    <form [formGroup]="recoverForm">
+        <p style="color: red;" *ngIf="!emailExists">*Lo sentimos, no existe ningún correo relacionado con dichas credenciales</p>
+
+        <label for="email"><b>Correo electrónico:</b></label>
+        <input type="email" class="form-control" id="emailRecuperacion" name="email" formControlName="email">
+
+        <div class="contenedor-boton mt-1">
+            <button type="submit" class="btn btn-primary" id="submit3" (click)="submitRecoverForm()" [disabled]="!recoverForm.valid">Recuperar contraseña</button>
+        </div>
+    </form>
+</div>

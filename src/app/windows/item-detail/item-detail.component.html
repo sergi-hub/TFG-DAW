@@ -1,0 +1,31 @@
+
+<app-charging-screen *ngIf="!cargado"></app-charging-screen>
+
+
+<div class="container mt-3" *ngIf="cargado">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="{{item.thumbnail.path}}.{{item.thumbnail.extension}}" alt="Nombre del personaje" class="img-fluid">
+      </div>
+      <div class="col-md-8">
+        <h2>{{ urlParts[1] === 'characters' ? item.name : item.title}}</h2>
+        <p>{{ item.description | nullOrEmpty : true }}</p>
+        <div class="text-center d-grid gap-2">
+          <button class="btn btn-outline-success btn-lg" type="button" (click)="saveArticle()" [disabled]="!user.loged || user.codes.includes(urlParts[2])">Guardar</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mt-3">
+        <h3>{{ urlParts[1] | actualPage }}</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 mt-3" *ngFor="let item of items; let i=index">
+        <a class="link" [routerLink]="['/'+uris[i]]">
+            <img src="{{item.thumbnail.path}}.{{item.thumbnail.extension}}" [alt]="uris[i].includes('characters') === true ? item.name : item.title" class="img-fluid" style="max-width: 170px; height: 210px;">
+            <p class="mt-1 my-class">{{ uris[i].includes('characters') === true ? item.name : item.title}}</p>
+        </a>
+      </div>
+    </div>
+  </div>
