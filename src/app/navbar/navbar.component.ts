@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HomeService } from 'src/services/home/home.service';
+import { MarvelService } from 'src/services/marvel/marvel.service';
 import { SharedService } from 'src/services/shared.service';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -22,7 +22,7 @@ export class NavbarComponent {
 
   private user: any[] = [];
 
-  constructor(private home: HomeService, public shared: SharedService, private route: ActivatedRoute, private actualRoute: RouteService, public users: UsersService) {
+  constructor(private home: MarvelService, public shared: SharedService, private route: ActivatedRoute, private actualRoute: RouteService, public users: UsersService) {
     this.page = home.page; //Obtiene la página por defecto del servicio Home (0)
   }
 

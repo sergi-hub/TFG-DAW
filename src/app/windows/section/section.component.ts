@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HomeService } from 'src/services/home/home.service';
+import { MarvelService } from 'src/services/marvel/marvel.service';
 import { SharedService } from 'src/services/shared.service';
 
 
@@ -18,7 +18,7 @@ export class SectionComponent {
 
   public pageNum: number = 0; // Número de la página
 
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute, private home: HomeService, private shared: SharedService) {
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute, private home: MarvelService, private shared: SharedService) {
     this.nombreRuta = this.route.snapshot.url[0].path; // Se asigna el nombre de la ruta actual
   }
 

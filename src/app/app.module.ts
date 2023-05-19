@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './windows/home/home.component';
 import { HeaderComponent } from './header/header.component';
-import { HomeService } from 'src/services/home/home.service';
+import { MarvelService } from 'src/services/marvel/marvel.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { lastSlashFilter } from 'src/pipes/lastSlashFilter.pipe';
 import { FooterComponent } from './footer/footer.component';
@@ -55,7 +55,7 @@ import { TermsAndConditionsComponent } from './windows/terms-and-conditions/term
     ReactiveFormsModule
   ],
   providers: [
-    HomeService,
+    MarvelService,
     SharedService,
     RouteService,
     CountriesService,

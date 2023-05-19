@@ -4,7 +4,7 @@ import { Observable, catchError, finalize, map, of } from 'rxjs';
 import { user } from 'src/app/windows/login/user';
 import { CountriesService } from './countries.service';
 import { ArticlesService } from './articles.service';
-import { HomeService } from './home/home.service';
+import { MarvelService } from './marvel/marvel.service';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class UsersService {
   public uris: string[] = []; // Aqui se guardan las uris de los artículos para poder asignarle la ruta correspondiente
   public codes: string[] = []; // Contiene los codigos de las uris para bloquear los botones de guardar si ya lo tiene guardado el usuario
 
-  constructor(private http: HttpClient, private countries: CountriesService, private articles: ArticlesService, private home: HomeService) { }
+  constructor(private http: HttpClient, private countries: CountriesService, private articles: ArticlesService, private home: MarvelService) { }
 
 
   /**

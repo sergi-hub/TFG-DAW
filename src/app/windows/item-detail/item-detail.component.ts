@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ArticlesService } from 'src/services/articles.service';
-import { HomeService } from 'src/services/home/home.service';
+import { MarvelService } from 'src/services/marvel/marvel.service';
 import { UsersService } from 'src/services/users.service';
 
 @Component({
@@ -35,7 +35,7 @@ export class ItemDetailComponent {
     }
   };
 
-  constructor(private home:HomeService, private route:Router, private article: ArticlesService, public user: UsersService) {
+  constructor(private home:MarvelService, private route:Router, private article: ArticlesService, public user: UsersService) {
     this.urlParts = this.route.url.split('/'); // Contiene las partes de la URL que las separa ('/')
   }
 

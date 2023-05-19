@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from 'src/services/home/home.service';
+import { MarvelService } from 'src/services/marvel/marvel.service';
 import { lastSlashFilter } from 'src/pipes/lastSlashFilter.pipe';
 import { forkJoin } from 'rxjs';
 import { SharedService } from 'src/services/shared.service';
@@ -34,7 +34,7 @@ export class HomeComponent {
   comicsNum: number = 0;
   eventNum: number = 0;
 
-  constructor(private homeService: HomeService, public shared: SharedService) {}
+  constructor(private MarvelService: MarvelService, public shared: SharedService) {}
 
   ngOnInit() {
     // Se elige de forma aleatoria una serie, personaje, comic y evento
@@ -44,10 +44,10 @@ export class HomeComponent {
     this.eventNum = Math.round(Math.random() * 20);
 
     // Se realizan las llamadas a la API
-    const llamada1 = this.homeService.getCharacters("0");
-    const llamada2 = this.homeService.getComics("0");
-    const llamada3 = this.homeService.getEvents("0");
-    const llamada4 = this.homeService.getSeries("0");
+    const llamada1 = this.MarvelService.getCharacters("0");
+    const llamada2 = this.MarvelService.getComics("0");
+    const llamada3 = this.MarvelService.getEvents("0");
+    const llamada4 = this.MarvelService.getSeries("0");
 
     // Se utiliza forkJoin para asegurarnos de que las llamadas estan realizadas antes de intentar mostrar datos en el template
     forkJoin([llamada1, llamada2, llamada3, llamada4])

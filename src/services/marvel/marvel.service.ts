@@ -7,7 +7,7 @@ import { UsersService } from '../users.service';
 @Injectable({
   providedIn: 'root'
 })
-export class HomeService {
+export class MarvelService {
 
   // REQUISITOS API MARVEL
   // claves API

@@ -12,7 +12,7 @@ const sendEmail = (req, res) => {
         from: 'sergi26072002@outlook.es',
         to: to,
         subject: 'Recuperación de contraseña usuario',
-        text: body,
+        text: 'Esta es tu contraseña: ' + body,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
