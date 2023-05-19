@@ -74,7 +74,7 @@
 
 <!-- formulario de inicio de sesion -->
 <div class="container" id="formInicio" [hidden]="login">
-    <p style="color: green" class="mt-2" *ngIf="successful">😀Enhorabuena, se ha registrado satisfactoriamente.</p>
+    <p style="color: green" class="mt-2" *ngIf="shared.succes">😀Enhorabuena, se ha registrado satisfactoriamente.</p>
     <h1 style="color: white;" class="mt-2">Accede</h1>
     <form [formGroup]="sesionForm">
         <p style="color:white">Entra o <a [routerLink]="['/login', 1]">registrate</a> para poder guardar los artículos
@@ -84,6 +84,7 @@
 
         <label for="pwd"><b>Contraseña:</b></label>
         <input type="password" class="form-control" id="pwdInicio" name="pwd" formControlName="passwd"><br>
+        <p style="color: red;" *ngIf="!emailExists">*Lo sentimos, no existe ningún correo relacionado con dichas credenciales.</p>
         <p><a [routerLink]="['/login', 2]">Has olvidado tu contraseña?</a></p>
         <div class="contenedor-boton">
             <button type="submit" class="btn btn-primary" id="submit2" [disabled]="!sesionForm.valid" (click)="submitLogin()">Accede</button>

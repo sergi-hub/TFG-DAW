@@ -13,7 +13,7 @@ import { SharedService } from 'src/services/shared.service';
 export class SectionComponent {
 
   public nombreRuta: string = ""; // Nombre de la ruta actual 
-  public resultados: any[] = []; // Array que contiene los resultados obtenidos de la llamada al servicio
+  public results: any[] = []; // Array que contiene los resultados obtenidos de la llamada al servicio
   public filteredResults: any[] = []; //Array que contiene los resultados del servicio, pero filtrados
 
   public pageNum: number = 0; // Número de la página
@@ -26,6 +26,7 @@ export class SectionComponent {
     // Nos suscribimos a los parámetros de la ruta para que cuando esta cambie, aparezcan nuevos datos en la pantalla
     this.route.params.subscribe(params => {
       this.filteredResults = []; // Se vacia el array del filtro, para que cargue los nuevos items
+      this.results = []; // Se vacia el array de items, para que cargue los nuevos
       this.pageNum = +params['pg'];
       this.compruebaUrl();
     });
@@ -50,22 +51,22 @@ export class SectionComponent {
     if (this.nombreRuta === 'characters') { // Para caracteres
       this.home.getCharacters(this.pageNum + "")
         .subscribe(data => {
-          this.resultados = data.data.results;
+          this.results = data.data.results;
         })
     } else if (this.nombreRuta === 'events') { // Para eventos
       this.home.getEvents(this.pageNum + "")
         .subscribe(data => {
-          this.resultados = data.data.results;
+          this.results = data.data.results;
         })
     } else if (this.nombreRuta === 'comics') { // Para comics
       this.home.getComics(this.pageNum + "")
         .subscribe(data => {
-          this.resultados = data.data.results;
+          this.results = data.data.results;
         })
     } else if (this.nombreRuta === 'series') { // Para series
       this.home.getSeries(this.pageNum + "")
         .subscribe(data => {
-          this.resultados = data.data.results;
+          this.results = data.data.results;
         })
     }
   }
@@ -78,11 +79,11 @@ export class SectionComponent {
     // Comprobamos en que pagina estamos, ya que la variable del nombre de los items cambia (title o name)
     if (this.nombreRuta !== 'characters') {
       // Asignamos a filteredResults todos los items a los que se le aplique el filtro
-      this.filteredResults = this.resultados.filter(item =>
+      this.filteredResults = this.results.filter(item =>
         item.title.toLowerCase().includes(value.toLowerCase())
       )
     } else {
-      this.filteredResults = this.resultados.filter(item =>
+      this.filteredResults = this.results.filter(item =>
         item.name.toLowerCase().includes(value.toLowerCase())
       )
     }

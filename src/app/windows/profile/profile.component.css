@@ -1,18 +1,28 @@
 h2{
     color: white;
+    font-family: 'Avenger', cursive;
 }
 
 h3{
     color: white;
+    font-family: 'Avenger', cursive;
 }
 
 p{
     color: white;
+    font-family: 'Marvel', cursive;
 }
 
 label{
+    font-family: 'Avenger', cursive;
     color: white;
 }
+
+button{
+    font-family: 'Avenger', cursive;
+    font-weight: bold;
+}
+
 
 .col-md-2{
     transition: all 0.6s;

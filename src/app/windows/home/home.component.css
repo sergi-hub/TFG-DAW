@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Bangers&display=swap');
+
 @font-face {
   font-family: 'Roboto';
   src: url('../../../fonts/roboto/Roboto-Medium.ttf');
@@ -17,12 +19,15 @@ img{
 h5{
   color: black;
   font-weight: bold;
-  font-family: 'RobotoBold';
+  font-family: 'Bangers', cursive;
+  letter-spacing: 1.5px;
+  font-size: 1.2em;
 }
 
 p{
     color: #ccc;
-    font-family: 'Roboto';
+    font-family: 'Bangers', cursive;
+    font-size: 1.2em;
 }
 
 .tarjeta {

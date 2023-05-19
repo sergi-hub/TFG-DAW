@@ -1,20 +1,22 @@
+<app-charging-screen *ngIf="results.length === 0"></app-charging-screen>
+
 <div class="container">
     <div class="row" *ngIf="filteredResults.length === 0; else filtrado">
-        <div class="col-md-6 col-sm-12" *ngFor="let data of resultados; let i=index">
+        <div class="col-md-6 col-sm-12" *ngFor="let data of results; let i=index">
             <div class="card mt-5 tarjeta">
-                <a class="link" [routerLink]="['/'+nombreRuta, resultados[i].id]">
+                <a class="link" [routerLink]="['/'+nombreRuta, results[i].id]">
                     <div class="row no-gutters">
                         <div class="col-md-5">
-                            <img src="{{resultados[i].thumbnail.path}}.{{resultados[i].thumbnail.extension}}" class="card-img-top img-fluid"
+                            <img src="{{results[i].thumbnail.path}}.{{results[i].thumbnail.extension}}" class="card-img-top img-fluid"
                                 alt="Descripción de la imagen">
                         </div>
                         <div class="col-md-7">
                             <div class="card-body pb-0">
                                 <h5 class="card-title">
-                                    {{ nombreRuta === 'characters' ? resultados[i].name : resultados[i].title }}
+                                    {{ nombreRuta === 'characters' ? results[i].name : results[i].title }}
                                 </h5>
                                 <p class="card-text">
-                                    {{ resultados[i].description | nullOrEmpty : false }}
+                                    {{ results[i].description | nullOrEmpty : false }}
                                 </p>
                             </div>
                         </div>
@@ -51,5 +53,5 @@
         </div>
     </ng-template>
 
-    <app-paginacion [resultados]="resultados.length"></app-paginacion>
+    <app-paginacion [results]="results.length"></app-paginacion>
 </div>

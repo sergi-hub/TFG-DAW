@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 @font-face {
   font-family: 'Climate';
   src: url('../../fonts/ClimateCrisis-Regular-VariableFont_YEAR.ttf');
@@ -9,15 +11,15 @@
 }
 
 h1{
-  color: #FFFFFF;
-  text-shadow: 1px 1px 0 #FF0000, 2px 2px 0 #FF0000, 3px 3px 0 #FF0000;
-  font-family: 'Marvel';
+  color: #FF0000;
+  /* text-shadow: 1px 1px 0 #FF0000, 2px 2px 0 #FF0000, 3px 3px 0 #FF0000; */
+  font-family: 'Anton', sans-serif;
 }
 
 h2{
   color: #CCC;
   text-shadow: 1px 1px 0 #FF0000, 2px 2px 0 #FF0000, 3px 3px 0 #FF0000;
-  font-family: 'Climate', sans-serif;
+  font-family: 'Anton', sans-serif;
 }
 
 .bg-image{

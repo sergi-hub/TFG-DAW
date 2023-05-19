@@ -13,18 +13,22 @@
 
 h2{
     color: white;
-    /* font-family: 'RobotoBold'; */
-    font-family: 'Bangers', cursive;
+    font-family: 'Avenger', cursive;
 }
 
 h3{
     color: white;
-    font-family: 'RobotoBold';
+    font-family: 'Avenger', cursive;
 }
 
 p{
     color: white;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Marvel', cursive;
+}
+
+button{
+    font-family: 'Avenger', cursive;
+    font-weight: bold;
 }
 
 .col-md-2{

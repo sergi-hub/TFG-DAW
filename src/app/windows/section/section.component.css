@@ -1,91 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Bangers&display=swap');
+
 @font-face {
-    font-family: 'Roboto';
-    src: url('../../../fonts/roboto/Roboto-Medium.ttf');
+  font-family: 'Roboto';
+  src: url('../../../fonts/roboto/Roboto-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'RobotoBold';
+  src: url('../../../fonts/roboto/Roboto-Bold.ttf');
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  border-right: 4px solid #F2360C;
+}
+
+h5 {
+  color: black;
+  font-weight: bold;
+  font-family: 'Bangers', cursive;
+  letter-spacing: 1.5px;
+  font-size: 1.2em;
+}
+
+p {
+  color: #ccc;
+  font-family: 'Bangers', cursive;
+  font-size: 1.2em;
+}
+
+.tarjeta {
+  position: relative;
+  max-height: 333px;
+  background-color: #F2360C;
+  background-image: linear-gradient(to right, #260101, #F2360C);
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  transition: 1s all;
+}
+
+.tarjeta:hover {
+  background-position: -100% 0;
+  border-right: 1px solid #F2360C;
+}
+
+.link {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1400px) {
+  .col-sm-12 {
+    width: 100%;
   }
-  
-  @font-face {
-    font-family: 'RobotoBold';
-    src: url('../../../fonts/roboto/Roboto-Bold.ttf');
-  }
-  
-  img{
-      width: 200px;
-      height: 200px;
-      border-right: 4px solid #F2360C;
-  }
-  
-  h5{
-    color: black;
-    font-weight: bold;
-    font-family: 'RobotoBold';
-  }
-  
-  p{
-      color: #ccc;
-      font-family: 'Roboto';
-  }
-  
+}
+
+@media screen and (max-width: 800px) {
   .tarjeta {
-    position: relative;
-    max-height: 333px;
-    background-color: #F2360C;
-    background-image: linear-gradient(to right, #260101, #F2360C);
-    background-repeat: no-repeat;
-    background-size: 200% 100%;
-    transition: 1s all;
+    height: auto;
+    max-height: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .tarjeta:hover {
-    background-position: -100% 0;
-    border-right: 1px solid #F2360C;
+
+  .row>* {
+    padding-right: 5px;
   }
-  
-  .link{
-    text-decoration: none;
+
+  .tarjeta .row {
+    width: calc(100% + 15px);
+    /* Ajusta el ancho del contenedor .row */
   }
-  
-  @media screen and (max-width: 1400px) {
-    .col-sm-12 {
-      width: 100%;
-    }
+
+  .tarjeta .col-md-5,
+  .tarjeta .col-md-7 {
+    width: 100%;
   }
-  
-  @media  screen and (max-width: 800px) {
-    .tarjeta {
-      height: auto;
-      max-height: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .row>* {
-      padding-right: 5px;
-    }
-  
-    .tarjeta .row {
-      width: calc(100% + 15px); /* Ajusta el ancho del contenedor .row */
-    }
-  
-    .tarjeta .col-md-5,
-    .tarjeta .col-md-7 {
-      width: 100%;
-    }
-  
-    .tarjeta .col-md-5 img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      border: none;
-    }
-  
-    .tarjeta .card-body {
-      text-align: center;
-    }
-  
-    .tarjeta .card-text {
-      margin-bottom: 0;
-    }
-  
+
+  .tarjeta .col-md-5 img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border: none;
   }
-  
+
+  .tarjeta .card-body {
+    text-align: center;
+  }
+
+  .tarjeta .card-text {
+    margin-bottom: 0;
+  }
+
+}

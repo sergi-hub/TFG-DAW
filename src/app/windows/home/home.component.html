@@ -1,8 +1,8 @@
 <app-header></app-header>
 <div style="background-color: #202020;">
-    <div class="container" *ngIf="!charged">
-        <h1>Cargando....</h1>
-    </div>
+    
+    <app-charging-screen *ngIf="!charged"></app-charging-screen>
+
     <div class="container" *ngIf="charged">
         <div class="container">
             <div class="row">

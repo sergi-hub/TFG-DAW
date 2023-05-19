@@ -9,7 +9,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { lastSlashFilter } from 'src/pipes/lastSlashFilter.pipe';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SectionService } from 'src/services/section/section.service';
 import { SectionComponent } from './windows/section/section.component';
 import { NullOrEmptyPipe } from 'src/pipes/nullOrEmpty';
 import { PaginacionComponent } from './paginacion/paginacion.component';
@@ -23,6 +22,7 @@ import { CountriesService } from 'src/services/countries.service';
 import { UsersService } from 'src/services/users.service';
 import { ArticlesService } from 'src/services/articles.service';
 import { ProfileComponent } from './windows/profile/profile.component';
+import { ChargingScreenComponent } from './charging-screen/charging-screen.component';
 
 
 
@@ -40,7 +40,8 @@ import { ProfileComponent } from './windows/profile/profile.component';
     ItemDetailComponent,
     ActualPagePipe,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    ChargingScreenComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +52,6 @@ import { ProfileComponent } from './windows/profile/profile.component';
   ],
   providers: [
     HomeService,
-    SectionService,
     SharedService,
     RouteService,
     CountriesService,

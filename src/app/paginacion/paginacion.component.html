@@ -7,9 +7,9 @@
               </li>
               <li class="page-item" *ngIf="num !== 0"><button class="page-link" (click)="btnPg(num-1)">{{num-1}}</button></li>
               <li class="page-item"><button class="page-link" (click)="btnPg(num)">{{num}}</button></li>
-              <li class="page-item" *ngIf="resultados === 20"><button class="page-link" (click)="btnPg(num+1)">{{num+1}}</button></li>
+              <li class="page-item" *ngIf="results === 20"><button class="page-link" (click)="btnPg(num+1)">{{num+1}}</button></li>
               <li class="page-item">
-                <button class="page-link" (click)="nextPg()" [ngClass]="{'disabled': resultados < 20}">Siguiente</button>
+                <button class="page-link" (click)="nextPg()" [ngClass]="{'disabled': results < 20}">Siguiente</button>
               </li>
             </ul>
           </nav>

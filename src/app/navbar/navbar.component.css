@@ -1,7 +1,4 @@
-@font-face {
-    font-family: 'Marvel';
-    src: url('../../fonts/Marvel-Regular/Marvel-Regular.ttf');
-}
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 
 nav {
     background: linear-gradient(to left, #260101 0%, #EC1922 40%, #EC1922 60%, #260101 100%);
@@ -25,11 +22,13 @@ li a {
     display: inline-block;
     text-decoration: none;
     color: white;
+    font-size: 1.2em;
+    font-family: 'Bangers', cursive;
     transition: 300ms all;
 }
 
 li a:hover {
-    font-size: 1.2em;
+    font-size: 1.5em;
     color: white;
 }
 

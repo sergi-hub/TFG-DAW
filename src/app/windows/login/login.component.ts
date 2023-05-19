@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, ValidationErro
 import { user } from './user';
 import { UsersService } from 'src/services/users.service';
 import { finalize, isEmpty } from 'rxjs';
+import { SharedService } from 'src/services/shared.service';
 
 @Component({
   selector: 'app-login',
@@ -47,7 +48,7 @@ export class LoginComponent {
   sesionForm: FormGroup;
   recoverForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private countrie: CountriesService, private formBuilder: FormBuilder, private users: UsersService, private router: Router) {
+  constructor(private route: ActivatedRoute, private countrie: CountriesService, private formBuilder: FormBuilder, private users: UsersService, private router: Router, public shared: SharedService) {
     // Obtenemos los paises del desplegable haciendo la llamada a la api
     this.countrie.getCountries().subscribe(data => {
       this.countries = data;
@@ -96,6 +97,14 @@ export class LoginComponent {
       }
     });
 
+    // Esto es por si escriben la url en la barra del navegador
+    setTimeout(() => {
+      if(this.users.loged){
+        this.router.navigate(['/profile']);
+      }
+    }, 50);
+    
+
   }
 
   /**
@@ -141,8 +150,8 @@ export class LoginComponent {
       
             this.users.insertUser(User).subscribe((success) => {
               if(success){
-                this.successful = true;
                 this.router.navigate(['/login']);
+                this.shared.succes = true;
               }else{
                 this.error = true;
               }
@@ -168,10 +177,12 @@ export class LoginComponent {
       .pipe(
         finalize(() => { // Esto se ejecutará al terminar el subscribe de abajo
           if(this.user.length !== 0){
-            console.log(this.user[0]);
             this.users.setUser(this.user[0]); // Mandamos los datos del usuario al servicio que los almacenará en variables
             this.router.navigate(['']); // Navegamos a la ventana home
-            console.log('Bienvenido ' + this.users.name);
+            this.shared.succes = false;
+          }else{
+            this.emailExists = false;
+            this.shared.succes = false;
           }
         })
       )

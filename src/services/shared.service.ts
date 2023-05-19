@@ -9,6 +9,8 @@ export class SharedService {
   inputValueSubject: Subject<string> = new Subject<string>(); // Objeto que actua como observable
   inputValue$ = this.inputValueSubject.asObservable(); // Variable a la que se le pasara el valor del objeto anterior
 
+  public succes: boolean = false;
+
   constructor() { }
 
   /**

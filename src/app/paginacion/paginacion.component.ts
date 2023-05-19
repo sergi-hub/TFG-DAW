@@ -10,7 +10,7 @@ import { SharedService } from 'src/services/shared.service';
 })
 export class PaginacionComponent {
 
-  @Input() resultados: number = 0; // Número de resultados de la página acutal que se recibe como entrada
+  @Input() results: number = 0; // Número de resultados de la página acutal que se recibe como entrada
 
   private url: string = ''; // URL de la página actual
 
