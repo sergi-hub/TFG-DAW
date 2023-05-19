@@ -61,7 +61,7 @@
 
         <input type="checkbox" name="terms" value="tAerms" formControlName="acceptTerms" required><span> *Al hacer clic
             en el botón, estás manifestando estar de
-            acuerdo con nuestra "<span>privacidad de datos y condiciones de uso</span>".</span><br>
+            acuerdo con nuestra "<a [routerLink]="['/terms']">privacidad de datos y condiciones de uso</a>".</span><br>
         <div class="contenedor-boton mt-2">
             <button type="submit" class="btn btn-primary" id="submit" [disabled]="!registerForm.valid"
                 (click)="submitRegisterForm()">Crear

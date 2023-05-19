@@ -6,6 +6,7 @@ import { ItemDetailComponent } from './windows/item-detail/item-detail.component
 import { LoginComponent } from './windows/login/login.component';
 import { ProfileComponent } from './windows/profile/profile.component';
 import { ErrorComponent } from './windows/error/error.component';
+import { TermsAndConditionsComponent } from './windows/terms-and-conditions/terms-and-conditions.component';
 
 // Define las rutas de la aplicación
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: "login", component:LoginComponent}, //Ruta para la pantalla de login/registro
   { path: "login/:register", component:LoginComponent},
   { path: "profile", component:ProfileComponent }, //Ruta para la pantalla del perfil
+  { path: "terms", component:TermsAndConditionsComponent}, //Ruta para la pantalla de terminos y condiciones
   { path: "**", component:ErrorComponent} //Ruta para la pantalla de página no encontrada
 ];
 

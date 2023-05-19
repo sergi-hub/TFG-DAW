@@ -24,6 +24,7 @@ import { ArticlesService } from 'src/services/articles.service';
 import { ProfileComponent } from './windows/profile/profile.component';
 import { ChargingScreenComponent } from './charging-screen/charging-screen.component';
 import { ErrorComponent } from './windows/error/error.component';
+import { TermsAndConditionsComponent } from './windows/terms-and-conditions/terms-and-conditions.component';
 
 
 
@@ -43,7 +44,8 @@ import { ErrorComponent } from './windows/error/error.component';
     LoginComponent,
     ProfileComponent,
     ChargingScreenComponent,
-    ErrorComponent
+    ErrorComponent,
+    TermsAndConditionsComponent
   ],
   imports: [
     BrowserModule,

@@ -67,8 +67,8 @@ export class LoginComponent {
 
 
     this.sesionForm = this.formBuilder.group({
-      email: ['sergisignes2002@gmail.com', [Validators.required, Validators.email]],
-      passwd: ['11111111', [Validators.required, Validators.pattern(this.textPattern2)]]
+      email: ['', [Validators.required, Validators.email]],
+      passwd: ['', [Validators.required, Validators.pattern(this.textPattern2)]]
     });
 
     this.recoverForm = this.formBuilder.group({
