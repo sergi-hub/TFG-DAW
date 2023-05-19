@@ -12,14 +12,14 @@
 
 h1{
   color: #FF0000;
-  /* text-shadow: 1px 1px 0 #FF0000, 2px 2px 0 #FF0000, 3px 3px 0 #FF0000; */
-  font-family: 'Anton', sans-serif;
+  font-family: 'Marvel', cursive;
+  -webkit-text-stroke: 1px black;
 }
 
 h2{
   color: #CCC;
   text-shadow: 1px 1px 0 #FF0000, 2px 2px 0 #FF0000, 3px 3px 0 #FF0000;
-  font-family: 'Anton', sans-serif;
+  font-family: 'Avenger', cursive;
 }
 
 .bg-image{
